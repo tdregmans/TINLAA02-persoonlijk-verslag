@@ -25,15 +25,15 @@
 		\centering
 		  \vfill
 		  {\bfseries\Huge
-		    Verslag Tinlab Advanced Algorithms \\
+		    Groepsverslag Tinlab Advanced Algorithms \\
 		      \vskip2cm
 		    }
 		    {\bfseries\Large
-		      Thijs Dregmans\\
+		      Thijs Dregmans, Tobias de Bildt, Eliam Traas, Hidde-Jan Daniëls\\
 		    }
 		    {
 		      \bfseries\normalsize
-		      1024272\\
+		      1024272, 1023603, 1003233, 0943798\\
 		      \vskip1cm
 		      \today\\
 		  }    
@@ -52,17 +52,27 @@
 	\tableofcontents
 	
 	\newpage
-	
-	%%%%%%% Inleiding %%%%%%%
+
+	%%%%%%% Analyse %%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
-	\section{Inleiding}
+	\section{Analyse}
 	
-	Voor de cursus 'Advanced Algorithms' van de opleiding Technische Informatica heb ik het volgende verslag geschreven. Het is een verwerking en samenvatting van de lesstof. Het dient zowel als naslagwerk voor mijzelf, als het aantonen van het behalen van de leerdoelen voor de cursus.
-	
-	Het Tinlab begon met het behandelen van het probleem van specificeren van requirements. Dit is alle design domeinen een groot probleem. Goede requirements definieren is een hoofdpijn dossier. We hebben naar systemen gekeken door het vier variabelen model. Vervolgens zijn een aantal rampen bekeken om dit model in de praktijk te gebruiken om uitspraken te doen over het falen van systemen.
+		% Als je een sluis gaat modelleren is het uiteraard eerst zaak een goed beeld op te
+		% bouwen van de werking van een sluis. Stel je, voordat je het internet overhoop
+		% haalt, eerst eens wat relevante vragen:
+		% - Zijn er verschillende soorten sluizen?
+		% - Uit welke onderdelen bestaat een sluis?
+		% - Hoe lang duurt het, voordat een boot door de sluis heen is?
+		% - Wat voor stappen (states?) moeten doorlopen worden om een boot van
+		%   de ene naar de andere kant te krijgen?
+		% - Wat voor cijfers horen er bij het bovenstaande? Hoe lang duurt een
+		%   bepaalde stap?
+		% - etc
 
-	[geef een samenvatting van de cursus]
+		[text]
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	\newpage
 	
@@ -71,319 +81,48 @@
 	
 	\section{Requirements}
 	
-		Requirements zijn eisen die gesteld worden aan een systeem.
+		% Hoe zijn de wensen van de opdrachtgever ge¨ınterpreteerd? Tot wat voor
+		% requirements/specificaties leiden deze? Anders gezegd: Wat betekent
+		% veilig, effici¨ent, etc. en wat heb je aan bronnen geraadpleegd om tot een
+		% goede analyse te komen? (Dit laatste hoef je niet te beschrijven: het
+		% blijkt immers uit citaten of verwijzingen die je gebruikt.)
 
-		[aanvullen]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Requirements}
-		
 		[text]
-		
+
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{specificaties}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Het vier variabelen model}
-		
-		Een handige manier om systemen te conceptualiseren is het vier variabelen model. Zie Figuur 1 voor een uitwerking van dit model.
-		
-		\begin{center}
-			\begin{minipage}{0.48\linewidth}
-				\includegraphics[width=\linewidth]{4variabelen.png}
-				\captionof{figure}{4 variabelen model}
-			\end{minipage}
-			\hfill
-		\end{center}
-
-		Dit model komt vooruit het idee van twee werelden die overlappen. Er is een tastbare wereld, met verschillende fenomenen. Deze wereld is de werld waarin wij leven. In deze wereld zijn problemen die wij willen oplossen met systemen. Zo'n systeem is geen onderdeel van de tastbare wereld. Het systeem is een wereld op zichzelf. Er wel enig overlap tussen de syteem-wereld en de tastbare wereld. Het overlap tussen deze werelden is de hardware, specifiek de sensoren en actuatoren.
-
-		De systeem-wereld is de software. Deze wereld heeft in zichzelf geen enkel idee van het bestaan van een ander wereld. De tastbare wereld is de omgeving waarin de het systeem functioneert (of moet functioneren). Ook deze wereld heeft geen idee van de werking van de ander. Dit is ook niet mogelijk of belangrijk, zolang de sensoren en actuatoren naar behoren functioneren.
-
-		De 4 verschillende delen van de van de werelden - omgeving, sensoren, software en actuatoren - communiceren met elkaar met behulp van variabelen.
-		
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Monitored variabelen}
-			
-			Monitored variabelen zijn de variabelen uit de wereld die door de sensoren wordt waargenomen en gemeten.
-			
-			Ter voorbeeld, een Monitored variabele kan de temperatuur zijn. De omgeving is bijvoorbeeld binnenshuis, bij iemand thuis. De sensor is een temperatuursensor. De sensor meet de waarde/variabele.
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Input variabelen}
-			
-			Input variabelen zijn de variabelen die door de sensor worden doorgegeven aan de software.
-
-			In het voorbeeld van de temperatuursensor, heeft de temperatuursensor de Monitored variabele omgezet in een reeks bits. Deze bits worden door de sensor naar de microcontroller gestuurd. Voor de software die op de microcontroller staat, is dit de input. In het syteem geldt deze bits als Input variabele.
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Output variabelen}
-			
-			Output variabelen zijn de variabelen die door de software worden geproduceerd en worden doorgegeven aan de actuatoren.
-
-			In het voorbeeld, heeft de software van de microcontroller de temperatuur - in de vorm van een aantal bits - omgezet in een output. De output is in dit voorbeeld een instructie voor een warmte element om aan te gaan, indien de temperatuur onder een bepaalde waarde zakt. De instructie voor het warmte element is de output van de software, en daarom - in dit voorbeeld - de Output variabele.
-
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Controlled variabelen}
-
-			Controlled variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed, of 'Controlled'.
-
-			In dit voorbeeld, is er door de microcontroller een instructie gegeven aan het warmte element. De microcontroller bevat de software en het warmte element is de actuator. Door de instructie van de software gaat het warmte element aan, en wordt het warmer in huis. De temperatuur stijgt. De Controlled variabele in dit voorbeeld is de temperatuur.
-
-			
-			In dit voorbeeld is de Controlled variabele en de Monitored variabele dezelfde variabele, maar dat hoeft niet zo te zijn. Men kan in plaats van een warmte element, ook een lampje aansluiten, die dan aan zou gaan bij een bepaalde temperatuur. In dit geval zou de Controlled variabele het licht van het lampje zijn.
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Rampen}
-		
-		De werking van het vier variabelen model wordt gedemonstreerd aan de hand van een aantal rampen.
-		
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Therac-25}
-			\begin{description}
-				\item[Beschrijving] 
-				In de Verenigde Staten vonden in de jaren 80 een serie ongelukken plaats, waarbij verschillende patienten een dodelijke dosis straling kreeg toegediend met de Therac-25. Anderen raakten zwaar-gewond. \cite{274940}\relax De Therac-25 verschilde met zijn voorloper - de Therac-20 - op een belangrijke manier. De Therac-20 is ook een computergestuurde machine, maar heeft ook hardware veiligheidsmaatregelen. In de Therac-25 zijn deze hardware veiligheidsmaatregelen verdwenen en vervangen door software die hetzelfde effect zouden moeten hebben. \cite{thomas1994story}\relax
-				\item[Datum en plaats] 
-				De ongelukken vonden plaats in de Verenigde Staten, tussen 1985 en 1987 \cite{274940}\relax.
-				\item[Oorzaak]
-				De zes ongelukken is aan verschillende zaken te wijden:
-				\begin{itemize}
-					\item De Therac-25 verwijderde de veiligheidshardware die wel aanwezig was op de Therac-20.
-					\item De Therac-25 had cryptisch foutmelding, die vaak enkel het woord "malfunction" bevatten, samen met een error code - een getal van 1 tot 64. Het was voor de gebruiker onduidelijk wat deze betekenden. Het was niet duidelijk of een dergelijke foutmelding de patient in gevaar kon brengen. Ook in de handleiding wordt niet gesproken over foutcodes.
-					\item De Therac-25 heeft 3 modi. Door een meganisch-draaiende schijf werd de installatie gereed gemaakt voor de juiste modus. Een sensor detecteerde of de schijf in de juiste positie stond. Deze gaf een 3 bits waarde terug. Een kleine foute elektronische fout kan een incorrect waarde teruggeven, waardoor een patient een overdosis kan krijgen.
-					\item De installatie gereed maken kost 8 seconden. Als de gebruiker kiest voor een bepaalde opstelling, dan wordt die gereed gemaakt. Als de gebruiker dan vervolgens nog voordat de installatie gereed is, de opstelling wijzigt, dan wordt dit niet opgemerkt. Op het scherm wordt de juiste opstelling getoond, maar in werkelijkheid is het systeem nog niet gereed.
-				\end{itemize}
-				
-			\end{description}
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Vlucht 1951}
-			\begin{description}
-				\item[Beschrijving]
-				
-				\item[Datum en plaats] 
-				
-				\item[Oorzaak]
-				
-			\end{description}
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Tsjernobyl}
-			\begin{description}
-				\item[Beschrijving]
-				
-				\item[Datum en plaats] 
-				
-				\item[Oorzaak]
-				
-			\end{description}
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Self-driving cars}
-			\begin{description}
-				\item[Beschrijving] 
-				
-				\item[Datum en plaats] 
-				
-				\item[Oorzaak]
-				
-			\end{description}
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Stints},
-			\begin{description}
-				\item[Beschrijving] 
-				
-				\item[Datum en plaats] 
-				
-				\item[Oorzaak]
-				
-			\end{description}
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			\subsubsection{Radiologische ongelukken in Bialystok, Polen}
-			\begin{description}
-				\item[Beschrijving] 
-				
-				\item[Datum en plaats] 
-				
-				\item[Oorzaak]
-				
-			\end{description}
-			
-		
-	\newpage
-	
-	%%%%%%% Modellen %%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	\section{Modellen}
-	
-	[text]
-	
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{De Kripke structuur}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Soorten modellen}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Tijd}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Guards en invarianten}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Deadlock}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Zeno gedrag}
-		
-		[text]
-		
-	\newpage
-	
-	%%%%%%% Logica %%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	\section{Logica}
-	
-	'Logica' komt van het Griekse woord 'logos', dat 'woord' en 'argument' betekent. Al duizenden jaren is men bezig met logica. Het wordt ook wel de kunst van formeel redeneren genoemd. Het is onder andere de basis voor de filosofie en wiskunde. Ook in de Informatica gaat het veel over logica.
-
-	Er wordt in de logica onderscheid gemaakt tussen verschillende soorten logica. Het makkelijkste voorbeeld is Syllogisme van Aristoteles. Zo'n redenering gaat volgens 3 stappen:
-
-	\begin{enumerate}
-		\item (algemene stelling) Alle mensen hebben een hoofd.
-		\item (bijzondere stelling) Thijs is een mens.
-		\item (conclusie) Thijs heeft een hoofd.
-	\end{enumerate}
-
-	Op deze manier kan een conclusie bewezen worden. Als de eerste twee stelling kloppen, dan klopt de conclusie ook. Daar is niet tegen in te brengen. Dit wordt ook wel deductie genoemd.
-
-	Verder wordt ook onderscheid gemaakt tussen Propositielogica en Predicatenlogica.
-	
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Propositielogica}
-		
-		Propositielogica maakt gebruik van Proposities. Proposities zijn uitspraken die waar of niet waar zijn. Voor de notatie worden hier vaak letters voor gebruikt, zoals in de wiskunde. Voorbeelden van Proposities zijn:
-
-		\begin{itemize}
-			\item \( 4 > 10 \)
-			\item De aarde is plat.
-			\item Alle mensen hebben twee handen.
-			\item Door 2 punten kan altijd een rechte lijn getrokken worden.
-		\end{itemize}
-
-		Naast Proposities zijn er ook stellingen en axioma. Stellingen zijn Proposities die te bewijzen zijn, zoals bijvoorbeeld de stelling van Pythagoras. Tijdens zo'n bewijs moet men aannames doen. Sommige dingen zijn zó fundamenteel dat ze niet te bewijzen zijn. Als men tracht deze te bewijzen kan een cirkelredenering ontstaan. Zo'n fundamentele aanname heet een axioma. Het is een grondslag, waar geen bewijs voor is. bijvoorbeeld:
-
-		\begin{itemize}
-			\item 0 is een getal
-			\item \( 0 \leq P(A) \leq 1 \), als \( A \subseteq S \)
-			\item (Wet van non-contradictie) Een stelling kan niet - op hetzelfde moment, op dezelfde manier - waar en niet waar zijn.
-		\end{itemize}
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Predicatenlogica}
-		
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Kwantoren}
-		
-		Er zijn 2 belangrijke kwantoren:
-
-		\begin{itemize}
-			\item De existentiekwantor (\( \exists \))
-
-			Wanneer deze kwantor voor een predikaat staat, betekent dat `voor ten minsten één`.
-
-			\item De universele kwantor (\( \forall \))
-
-			Wanneer deze kwantor voor een predikaat staat, betekent dat `voor alle`.
-		\end{itemize}
-
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Dualiteiten}
-		
-		[text]
 	
 	\newpage
-	
-	%%%%%%% tree logic %%%%%%%
+
+	%%%%%%% Modeleren %%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
-	\section{Computation tree logic}
+	\section{Modeleren}
 	
-	[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{De computation tree}
-				
+		% -  De modelcriteria van Vaandrager zijn op allerlei manieren tegenstrij-
+		%    dig. Welke keuzes en afwegingen heb je gemaakt en waarom?
+		% –  Gemodelleerde onderdelen.
+		% –  Werking van het model.
+
 		[text]
-		
+
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: AG}
-				
+	
+	\newpage
+
+	%%%%%%% Verificatie %%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\section{Verificatie}
+
+		% – Wat heb je geverifieerd, waarom en hoe?
+		% – Als je iets niet kon verifi¨eren, waarom dan niet?
+		% – Een harde eis is dat er een aantal eigenschappen geverifieerd zijn.
+		% We modelleren een systeem immers middels Kripke structuren om
+		% harde uitspraken over eigenschappen van zo’ n systeem te kunnen
+		% doen.
+
 		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: EG}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: AF}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: EF}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: AX}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: EX}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: p U q}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Operator: p R q}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Fairness}
-				
-		[text]
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Liveness}
-			
-		[text]
-		
+
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	\newpage

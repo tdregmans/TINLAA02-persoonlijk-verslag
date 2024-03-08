@@ -7,6 +7,13 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage[dutch]{babel}
 
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+%Includes "References" in the table of contents
+\usepackage[nottoc]{tocbibind}
+
+% \addbibresource{references.bib} %Import the bibliography file
+
 \begin{document}
 
 	\sffamily
@@ -131,16 +138,23 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Rampen}
 		
-		De werking van het vier variabelen model wordt gedemonstreerd aan de hand van een aantal verschillende rampen.
+		De werking van het vier variabelen model wordt gedemonstreerd aan de hand van een aantal rampen.
 		
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Therac-25}
 			\begin{description}
 				\item[Beschrijving] 
-				
+				In de Verenigde Staten vonden in de jaren 80 een serie ongelukken plaats, waarbij verschillende patienten een dodelijke dosis straling kreeg toegediend met de Therac-25. Anderen raakten zwaar-gewond. \cite{274940}\relax De Therac-25 verschilde met zijn voorloper - de Therac-20 - op een belangrijke manier. De Therac-20 is ook een computergestuurde machine, maar heeft ook hardware veiligheidsmaatregelen. In de Therac-25 zijn deze hardware veiligheidsmaatregelen verdwenen en vervangen door software die hetzelfde effect zouden moeten hebben. \cite{thomas1994story}\relax
 				\item[Datum en plaats] 
-				
+				De ongelukken vonden plaats in de Verenigde Staten, tussen 1985 en 1987 \cite{274940}\relax.
 				\item[Oorzaak]
+				De zes ongelukken is aan verschillende zaken te wijden:
+				\begin{itemize}
+					\item De Therac-25 verwijderde de veiligheidshardware die wel aanwezig was op de Therac-20.
+					\item De Therac-25 had cryptisch foutmelding, die vaak enkel het woord "malfunction" bevatten, samen met een error code - een getal van 1 tot 64. Het was voor de gebruiker onduidelijk wat deze betekenden. Het was niet duidelijk of een dergelijke foutmelding de patient in gevaar kon brengen. Ook in de handleiding wordt niet gesproken over foutcodes.
+					\item De Therac-25 heeft 3 modi. Door een meganisch-draaiende schijf werd de installatie gereed gemaakt voor de juiste modus. Een sensor detecteerde of de schijf in de juiste positie stond. Deze gaf een 3 bits waarde terug. Een kleine foute elektronische fout kan een incorrect waarde teruggeven, waardoor een patient een overdosis kan krijgen.
+					\item De installatie gereed maken kost 8 seconden. Als de gebruiker kiest voor een bepaalde opstelling, dan wordt die gereed gemaakt. Als de gebruiker dan vervolgens nog voordat de installatie gereed is, de opstelling wijzigt, dan wordt dit niet opgemerkt. Op het scherm wordt de juiste opstelling getoond, maar in werkelijkheid is het systeem nog niet gereed.
+				\end{itemize}
 				
 			\end{description}
 			
@@ -377,9 +391,7 @@
 	%%%%%%% references %%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
-	\bibliography{references}
-	\bibliographystyle{plain}
+	\bibliographystyle{plain} 
+	\bibliography{references} % Entries are in the refs.bib file
 	
 \end{document}
-
-

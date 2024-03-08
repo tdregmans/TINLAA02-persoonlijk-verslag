@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+const int SENSOR_COUNT=2;
+
+typedef int[0,SENSOR_COUNT-1] sensor_id;
+
+chan activated[sensor_id];
+
+const int DELAY = 5;</declaration>
+	<template>
+		<name x="5" y="5">roltrap</name>
+		<declaration>// Place local declarations here.
+
+clock x;</declaration>
+		<location id="id0" x="-340" y="-68">
+			<name x="-323" y="-102">stilstand</name>
+		</location>
+		<location id="id1" x="-170" y="-68">
+			<name x="-153" y="-51">omhoog_bewegend</name>
+			<label kind="invariant" x="-153" y="-68">x&lt;=DELAY</label>
+		</location>
+		<location id="id2" x="-510" y="-68">
+			<name x="-654" y="-51">omlaag_bewegend</name>
+			<label kind="invariant" x="-595" y="-68">x&lt;=DELAY</label>
+		</location>
+		<init ref="id0"/>
+		<transition id="id3">
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-697" y="-119">activated[1]?</label>
+			<label kind="assignment" x="-620" y="-136">x:=0</label>
+			<nail x="-578" y="-68"/>
+			<nail x="-578" y="-136"/>
+		</transition>
+		<transition id="id4">
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-93" y="-127">activated[0]?</label>
+			<label kind="assignment" x="-93" y="-144">x:=0</label>
+			<nail x="-102" y="-68"/>
+			<nail x="-102" y="-144"/>
+		</transition>
+		<transition id="id5">
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-467" y="8">x&gt;=DELAY</label>
+			<nail x="-476" y="0"/>
+			<nail x="-374" y="0"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-484" y="-161">activated[1]?</label>
+			<label kind="assignment" x="-484" y="-178">x:=0</label>
+			<nail x="-375" y="-136"/>
+			<nail x="-477" y="-136"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-289" y="-161">x&gt;=DELAY</label>
+			<nail x="-204" y="-136"/>
+			<nail x="-306" y="-136"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-306" y="8">activated[0]?</label>
+			<label kind="assignment" x="-306" y="25">x:=0</label>
+			<nail x="-306" y="0"/>
+			<nail x="-204" y="0"/>
+		</transition>
+	</template>
+	<template>
+		<name>sensor</name>
+		<parameter>sensor_id i</parameter>
+		<declaration>clock y;</declaration>
+		<location id="id9" x="0" y="0">
+		</location>
+		<init ref="id9"/>
+		<transition id="id10">
+			<source ref="id9"/>
+			<target ref="id9"/>
+			<label kind="guard" x="42" y="-34">y&gt;=1</label>
+			<label kind="synchronisation" x="42" y="-17">activated[i]!</label>
+			<label kind="assignment" x="42" y="0">y:=0</label>
+			<nail x="34" y="34"/>
+			<nail x="34" y="-34"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+//Process = Template();
+// List one or more processes to be composed into a system.
+system roltrap, sensor;
+</system>
+	<queries>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-02-29 12:31:22 +0100">
+			</result>
+		</query>
+	</queries>
+</nta>

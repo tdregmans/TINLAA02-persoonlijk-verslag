@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+</declaration>
+	<template>
+		<name x="5" y="5">Zaklamp</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id0" x="-102" y="-34">
+			<name x="-93" y="-68">Uit</name>
+		</location>
+		<location id="id1" x="34" y="-34">
+			<name x="42" y="-68">Stand 1 aan</name>
+		</location>
+		<location id="id2" x="170" y="-34">
+			<name x="178" y="-68">Stand 2 aan</name>
+		</location>
+		<location id="id3" x="306" y="-34">
+			<name x="314" y="-68">Stand 3 aan</name>
+		</location>
+		<location id="id4" x="442" y="-34">
+			<name x="450" y="-68">Stand 4 aan</name>
+		</location>
+		<init ref="id0"/>
+		<transition id="id5">
+			<source ref="id4"/>
+			<target ref="id1"/>
+			<nail x="510" y="-34"/>
+			<nail x="510" y="136"/>
+			<nail x="34" y="136"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id0"/>
+			<target ref="id4"/>
+			<nail x="-102" y="25"/>
+			<nail x="-102" y="68"/>
+			<nail x="442" y="68"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<nail x="-102" y="34"/>
+			<nail x="306" y="34"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<nail x="-102" y="0"/>
+			<nail x="170" y="0"/>
+		</transition>
+		<transition id="id9">
+			<source ref="id4"/>
+			<target ref="id0"/>
+			<nail x="442" y="-306"/>
+			<nail x="-102" y="-306"/>
+		</transition>
+		<transition id="id10">
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<nail x="306" y="-238"/>
+			<nail x="-102" y="-238"/>
+		</transition>
+		<transition id="id11">
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<nail x="170" y="-102"/>
+			<nail x="170" y="-170"/>
+			<nail x="-102" y="-170"/>
+		</transition>
+		<transition id="id12">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<nail x="34" y="-102"/>
+			<nail x="-102" y="-102"/>
+			<nail x="-102" y="-102"/>
+		</transition>
+		<transition id="id13">
+			<source ref="id3"/>
+			<target ref="id4"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id2"/>
+			<target ref="id3"/>
+		</transition>
+		<transition id="id15">
+			<source ref="id1"/>
+			<target ref="id2"/>
+		</transition>
+		<transition id="id16">
+			<source ref="id0"/>
+			<target ref="id1"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+// Process = Template();
+
+// List one or more processes to be composed into a system.
+system Zaklamp;
+
+</system>
+	<queries>
+		<query>
+			<formula/>
+			<comment/>
+		</query>
+	</queries>
+</nta>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>
+chan click;
+
+const int MAXLEVEL=5;
+
+typedef int[0,MAXLEVEL-1] lumen;
+
+lumen global_l;</declaration>
+	<template>
+		<name>lamp</name>
+		<declaration>clock y;
+
+lumen l;</declaration>
+		<location id="id0" x="0" y="0">
+			<name x="-34" y="-34">uit</name>
+		</location>
+		<location id="id1" x="204" y="0">
+			<name x="221" y="-34">aan</name>
+		</location>
+		<init ref="id0"/>
+		<transition id="id2">
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<nail x="170" y="-68"/>
+			<nail x="34" y="-68"/>
+		</transition>
+		<transition id="id3">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="76" y="42">click?</label>
+			<label kind="assignment" x="52" y="68">l:=global_l</label>
+			<nail x="34" y="68"/>
+			<nail x="170" y="68"/>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">knop</name>
+		<declaration>// Place local declarations here.
+clock x;
+</declaration>
+		<location id="id4" x="204" y="68">
+		</location>
+		<init ref="id4"/>
+		<transition id="id5">
+			<source ref="id4"/>
+			<target ref="id4"/>
+			<label kind="select" x="280" y="59">temp:lumen</label>
+			<label kind="synchronisation" x="280" y="42">click!</label>
+			<label kind="assignment" x="280" y="76">global_l:=temp</label>
+			<nail x="271" y="136"/>
+			<nail x="271" y="0"/>
+		</transition>
+	</template>
+	<system>system lamp, knop;
+</system>
+	<queries>
+		<option key="--diagnostic" value="2"/>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2024-02-27 15:36:53 +0100">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+	</queries>
+</nta>

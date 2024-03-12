@@ -12,6 +12,11 @@
 %Includes "References" in the table of contents
 \usepackage[nottoc]{tocbibind}
 
+% libraries for use of Liveness operator
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amssymb}
+
 % \addbibresource{references.bib} %Import the bibliography file
 
 \begin{document}
@@ -72,13 +77,29 @@
 	\section{Requirements}
 	
 		Requirements zijn eisen die gesteld worden aan een systeem.
-
-		[aanvullen]
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Requirements}
 		
-		[text]
+		Er zijn veel verschillende soorten requirements. Denk dan bijvoorbeeld aan \cite{Lamsweerde2009Requirements}\relax:
+
+		\begin{itemize}
+			\item Security requirements
+			\item Reliability requirements
+			\item Compliance requirements
+			\item Development constraints zoals budget
+		\end{itemize}
+
+		In dit Tinlab wordt onderscheid gemaakt tussen twee verschillende requirements:
+
+		\begin{enumerate}
+			\item System requirements
+			\item Software requirements
+		\end{enumerate}
+
+		System requirements doen uitspraken over de wereld en de fenomenen in de wereld - of ze spreken over een doel dat bereikt moet worden. Software requirements doen uitspraken over fenomenen in de machine - of over doelen die de machine moet bereiken.
+
+		Software kan van zichzelf niet communiceren met de buitenwereld. Een systeem communiceert met de buitenwereld middels sensoren en actuatoren.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{specificaties}
@@ -103,6 +124,15 @@
 		De systeem-wereld is de software. Deze wereld heeft in zichzelf geen enkel idee van het bestaan van een ander wereld. De tastbare wereld is de omgeving waarin de het systeem functioneert (of moet functioneren). Ook deze wereld heeft geen idee van de werking van de ander. Dit is ook niet mogelijk of belangrijk, zolang de sensoren en actuatoren naar behoren functioneren.
 
 		De 4 verschillende delen van de van de werelden - omgeving, sensoren, software en actuatoren - communiceren met elkaar met behulp van variabelen.
+	
+		System requirements definiëren de relaties tussen de monitored variabelen en de controlled variabelen:
+
+		\[ SysReq \subseteq M \times C\]
+
+		Software requirements definiëren de relaties tussen de input variabelen en de output variabelen:
+
+
+		\[ SoftReq \subseteq I \times O \]
 		
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Monitored variabelen}
@@ -221,37 +251,81 @@
 	
 	\section{Modellen}
 	
-	[text]
+	Om systemen efficïent en waarheidsgetrouw te kunnen modelleren gebruiken we State Transition Diagrams. In deze diagrammen worden de zogenoemde 'states' als punten afgebeeld. In een systeem kunnen tussen deze states geswitcht worden. Dit noemen we transities.
+
+	[voeg voorbeeld van STD in]
+
+	Er zijn veel verschillende soorten diagrammen. Dit TINLAB focust op Kripke structuren.
 	
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{De Kripke structuur}
 		
-		[text]
+		Een state is een beschrijving waarin een systeem zich gedurende een tijd bevindt.
+
+		[voeg voorbeeld van Kripke structuur in]
+
+		Laten we als voorbeeld een stoplicht nemen. Men zou kunnen zeggen dat er in dit systeem vier verschillende states zijn:
+
+		\begin{itemize}
+			\item Rood licht
+			\item Oranje licht
+			\item Groen licht
+			\item Oranje knipperend licht (error state)
+		\end{itemize}
+
+		Een systeem heeft altijd een begintoestand. Dit wordt de 'initial state' genoemd. Dit is de toestand waarmee het systeem start. 
+		x = 0
+
+		We noemen de verzameling van alle states 'S'. Elke individuele state noemen we s0, s1, s2 en s3.
+
+		s0...s3 e S
+
+		Tussen deze vier toestanden zijn verschillende transities mogelijk. Alle transitiesrelaties die mogelijk zijn:
+
+		S = {s0, s1, s2, s3}
+		R ? S x S = {
+			(s0, s0), (s0, s1), (s0, s2), (s0, s3),
+			(s1, s0), (s1, s1), (s1, s2), (s1, s3),
+			(s2, s0), (s2, s1), (s2, s2), (s2, s3),
+			(s3, s0), (s3, s1), (s3, s2), (s3, s3),
+		}
+
+		Niet al deze transitie relaties zijn logisch en komen in de werkelijkheid voor. Zo is bijvoorbeeld de transitierelatie van Rood licht naar Oranje licht niet gebruikelijk.
 		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Soorten modellen}
-		
-		[text]
+		Alle systemen die wij modelleren zijn reactief. Dat betekent dat elke state een uitgaande transitierelatie moet hebben. Dit wordt ook wel een 'totaal' systeem genoemd.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Tijd}
 		
-		[text]
+		
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Guards en invarianten}
+		\subsection{Guards en Invarianten}
 		
-		[text]
+		In de tool Uppaal kunnen we met Kripke structuren systemen modelleren. Elke toestand kan Invarianten krijgen. Elke transitierelatie kan Guards krijgen.
+		
+		Met een Invariant kunnen we eisen dat een bepaalde stelling altijd waar moet zijn zolang het systeem in die toestand is. Als de stelling niet meer waar is, dan wordt een transitie geforceerd.
+
+		Met een Guard kunnen we eisen dat een bepaalde transitie alleen genomen kan worden als een bepaalde stelling waar is.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Deadlock}
 		
-		[text]
+		Een deadlock wordt veroorzaakt door een combinatie van Guards en Invarianten waardoor tijd niet kan verstrijken.
+
+		In Uppaal is tijd een continu verschijnsel. Alle klokken lopen even snel. Tijd kan alleen verstrijken in states. Het kost dus exact 0 tijd om een transitie te nemen. Als de Guards en Invarianten op een bepaalde manier zijn ingesteld, dan kan het zo zijn dat tijd niet kan verstrijken in het model. Dit heet een 'deadlock'.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Zeno gedrag}
 		
-		[text]
+		Zeno gedrag is vernoemd naar de Griekse filosoof Zeno van Elea. Hij is bekend van verschillende paradoxen. Hier gaat het over de race tussen de schildpad en Achilles:
+		
+		De schildpad gaat een wedstrijd aan met Achilles en zegt tegen hem dat hij zal winnen, zolang hij maar een voorsprong krijgt. De schildpad krijgt een voorsprong en de tijd begint te lopen. De redenering van de schildpad is als volgt: Als Achilles is aangekomen waar de schildpad begon, heeft de schildpad in de tussentijd tijd gehad om verder te komen. Dus Achilles zal de schildpad nooit inhalen. De redenering van de schildpad klopt niet.
+
+		Het probleem is dat in een eindige hoeveelheid tijd er een oneindig aantal handelingen kan worden verricht.
+
+
+		[ geef meer uitleg]
 		
 	\newpage
 	
@@ -270,7 +344,7 @@
 		\item (conclusie) Thijs heeft een hoofd.
 	\end{enumerate}
 
-	Op deze manier kan een conclusie bewezen worden. Als de eerste twee stelling kloppen, dan klopt de conclusie ook. Daar is niet tegen in te brengen. Dit wordt ook wel deductie genoemd.
+	Op deze manier kan een conclusie bewezen worden. Als de eerste twee stelling kloppen, dan klopt de conclusie ook. Daar is niets tegen in te brengen. Dit wordt ook wel deductie genoemd.
 
 	Verder wordt ook onderscheid gemaakt tussen Propositielogica en Predicatenlogica.
 	
@@ -297,7 +371,12 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Predicatenlogica}
 		
-		[text]
+		In de logica zijn de Wetten van De Morgan van belang. De Wetten van De Morgan stellen dat twee stellingen met een 'en' operator te schrijven zijn met een 'of' operator met een aantal 'niet' operatoren, en andersom:
+	
+		\begin{itemize}
+			\item \( (p \land q) \equiv \neg(\neg p \lor \neg q) \)
+			\item \( (p \lor q) \equiv \neg(\neg p \land \neg q) \)
+		\end{itemize}
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Kwantoren}
@@ -318,71 +397,136 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Dualiteiten}
 		
-		[text]
+		De Wetten van De Morgan kunnen ook toegepast worden op de kwantoren. Daaruit volgen de volgende algemene regels:
+
+		\begin{itemize}
+			\item \( \neg \forall xP(x) \equiv \exists x \neg P(x) \)
+			\item \( \neg \exists xP(x) \equiv \forall x \neg P(x) \)
+		\end{itemize}
 	
 	\newpage
 	
 	%%%%%%% tree logic %%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
-	\section{Computation tree logic}
+	\section{Computation Tree Logic}
 	
-	[text]
+	De propositielogica doet uitspraken over p en q. Het probleem is dat p en q wel waar zijn in de ene state, terwijl dat in een andere niet zo hoeft te zijn. Propositielogica is toe te passen op een wereld die telkens verandert. Daarom is Computation Tree Logic in het leven geroepen. Het is een vorm van temporele logica. Dat betekent dat het afhangt van de tijd. Deze CTL kan ook (gedeeltelijk) in Uppaal gebruikt worden.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{De computation tree}
-				
-		[text]
+		
+		Met een Computation Tree kan CTL duidelijk worden uitgelegd. 
+
+		In een Kripke structuur kan men een oneindig aantal stappen doorlopen. Men begint bij de initial state. Vervolgens kan men één of meerdere transities nemen naar een volgende state. Vanuit die state zijn er weer andere transities mogelijk, enzovoort. Vanuit de Kripke structuur kan de Computation Tree opgebouwd worden. De Computation Tree laat zien welke mogelijke paden allemaal bewandeld kunnen worden met de Kripke structuur. De Computation Tree is een (omgekeerde) boom, met bovenaan de initial state. Vanuit die state zijn één of meerdere transities mogelijk naar andere states. Die zijn weergegeven als takken die verbonden zijn met de initial state.
+		
+		Omdat de Kripke structuren totaal zijn - en dus per definitie oneindig bewandelbaar zijn - zijn de Computation Trees oneindig groot. Toch is er vanaf een zeker moment een patroon in te herkennen. Het is onnodig - en bovendien onmogelijk - om de gehele Computation Tree te tekenen. Het gaat enkel om het relevante deel.
+
+		[voeg CT in]
+
+		In een Kripke structuur \( M \), in state \( s \) is de formule \( \phi \) waar. Dit is uit te drukken in de volgende vorm:
+
+		\( M, s \models \phi \)
+
+		\( \phi \) is uit te drukken met een verschillende aantal operatoren:
+
+		\( \phi \equiv \phi | \neg \phi | \phi \land \phi | \phi \lor \phi | AG(\phi) | EG(\phi) | AF(\phi) | EF(\phi) | AX(\phi) | EX(\phi) | A(\phi U \phi) | E(\phi U \phi) | A (\phi R \phi) | E(\phi R \phi) \)
+
+		Zoals je ziet is \( \phi \) recursief. Het kan een negatie van een andere functie zijn, en daarom werken de regels recursief. Er zijn een aantal belangrijke operatoren. Hieronder worden ze kort beschreven met wiskundige definitie en kort de implicaties voor de CTL.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: AG}
 				
-		[text]
+		\( M, s \models AG(p) \iff \forall \pi \in \Pi (M, s) \cdot \forall i \cdot M, \pi [i] \models p\)
+
+		AG staat voor 'Always Globally'. Het betekent dat voor elke mogelijke pad in de Computation Tree, voor elk node op die paden, \( p \) waar is.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: EG}
 				
-		[text]
+		\( M, s \models EG(p) \iff \exists \pi \in \Pi (M, s) \cdot \exists i \cdot M, \pi [i] \models p\)
+
+		EG staat voor 'Exists Globally'. Het betekent dat er in de Computation Tree een pad is waar, voor elk node op dat pad, \( p \) waar is. Dit geldt niet voor alle paden.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: AF}
 				
-		[text]
+		\( M, s \models AF(p) \iff \forall \pi \in \Pi (M, s) \cdot \exists i \cdot M, \pi [i] \models p\)
+
+		AF staat voor 'Always Eventually'. Het betekent dat voor elke mogelijke pad in de Computation Tree, er op die paden er een node is, waar \( p \) waar is. Dit is niet elke node op de paden.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: EF}
 				
-		[text]
+		\( M, s \models EF(p) \iff \forall \pi \in \Pi (M, s) \cdot \exists i \cdot M, \pi [i] \models p\)
+
+		EF staat voor 'Exists Eventually'. Het betekent dat er in de Computation Tree een pad is waar, een node is waar \( p \) waar is. Dit geldt niet voor alle paden en niet voor alle nodes.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: AX}
 				
-		[text]
+		\( M, s \models AX(p) \iff \forall \pi \in \Pi (M, s) \cdot M, \pi [1] \models p\)
+
+		AX staat voor 'Always Next'. Het betekent dat voor elke mogelijke pad in de Computation Tree, \( p \) waar is in de volgende (in andere woorden; tweede) node. 
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: EX}
 				
-		[text]
+		\( M, s \models EX(p) \iff \exists \pi \in \Pi (M, s) \cdot M, \pi [1] \models p\)
+
+		EX staat voor 'Exists Next'. Het betekent dat in de Computation Tree er een pad is, waar \( p \) waar is in de volgende (in andere woorden; tweede) node. Dit geldt niet voor alle paden.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: p U q}
 				
-		[text]
-		
+		\( M, s \models A(pUq) \iff \forall \pi \in \Pi (M, s) \cdot \exists k \cdot (M, \pi [k] \models q) \land (\forall i < k \cdot M, \pi[i] \models p)\)
+
+		\( M, s \models E(pUq) \iff \exists \pi \in \Pi (M, s) \cdot \exists k \cdot (M, \pi [k] \models q) \land (\forall i < k \cdot M, \pi[i] \models p)\)
+
+		A(pUq) staat voor 'Always ...' 
+
+		[leg verder uit] 		
+
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: p R q}
 				
-		[text]
+		\( M, s \models A(pRq) \iff \forall \pi \in \Pi (M, s) \cdot \forall k \cdot (\forall i < k \cdot M, \pi [i] \models \neg p) \Rightarrow (M, \pi [k] \models q) \)
+
+		\( M, s \models E(pRq) \iff \exists \pi \in \Pi (M, s) \cdot \forall k \cdot (\forall i < k \cdot M, \pi [i] \models \neg p) \Rightarrow (M, \pi [k] \models q) \)
+
+		A(pUq) staat voor 'Always ...' 
+
+		[leg verder uit] 		
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Fairness}
 				
-		[text]
+		Omdat de definitie recursief is, is het mogelijk om operatoren te combineren. Sommige combinaties zijn erg zinvol, zoals bijvoorbeeld \( AG ( AF (p) )\)
+
+		Dit betekent dat op elk mogelijk pad, in elk mogelijke state \( AF(p) \) moet gelden. In andere woorden: Het moet altijd mogelijk zijn om vanuit de huidige state op een gegeven moment p waar te laten zijn. 
+
+		\( AG ( AF ( p ) ) \) heet 'fairness'.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Liveness}
 			
-		[text]
+		Liveness is een algemenere vorm van 'fairness'. De formule is 
+
+		\( AG (p \Rightarrow AF(q)) \) 
+
+		Dit betekent dat 
+
+		 \( p \Rightarrow AF(q) \) 
+
+		altijd moet gelden, in elk pad, in elke state op dat pad.
+
+		"Als p geldt dan moet q altijd - vroeg of laat - volgen."
+
+		Er is een speciale operator voor Liveness:
+
+		\( p \rightsquigarrow q \equiv AG (p \Rightarrow AF (q) ) \)
+
+		Let op! Ook als p nooit geldt, dan geldt de Liveness eigenschap! In zo'n situatie spreken we van een 'vacuous truth'. Een waarheid die nooit voorkomt.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	

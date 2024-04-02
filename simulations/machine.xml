@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+const int MAXLAMP=3;
+
+typedef int[0,MAXLAMP-1]id_l;
+
+chan klik;</declaration>
+	<template>
+		<name x="5" y="5">machine</name>
+		<declaration>// Place local declarations here.
+clock x;
+
+bool b = false;
+</declaration>
+		<location id="id0" x="0" y="0">
+			<name x="-25" y="-34">S0</name>
+		</location>
+		<location id="id1" x="102" y="0">
+			<name x="76" y="-34">S1</name>
+		</location>
+		<location id="id2" x="204" y="-68">
+			<name x="178" y="-102">S2</name>
+			<label kind="invariant" x="161" y="-119">x&lt;=1</label>
+		</location>
+		<location id="id3" x="204" y="68">
+			<name x="194" y="34">S3</name>
+		</location>
+		<location id="id4" x="306" y="0">
+			<name x="272" y="-34">S4</name>
+			<label kind="invariant" x="255" y="-17">x&lt;=2</label>
+		</location>
+		<init ref="id0"/>
+		<transition id="id5">
+			<source ref="id4"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="297" y="110">b:=false</label>
+			<nail x="374" y="0"/>
+			<nail x="374" y="136"/>
+			<nail x="0" y="136"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id3"/>
+			<target ref="id4"/>
+			<nail x="306" y="68"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<nail x="102" y="68"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id2"/>
+			<target ref="id4"/>
+			<nail x="306" y="-68"/>
+			<nail x="306" y="-17"/>
+		</transition>
+		<transition id="id9">
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="assignment" x="110" y="-68">b:=true,
+x:=0</label>
+			<nail x="102" y="-68"/>
+		</transition>
+		<transition id="id10">
+			<source ref="id0"/>
+			<target ref="id1"/>
+		</transition>
+	</template>
+	<template>
+		<name>lamp</name>
+		<parameter>id_l l</parameter>
+		<location id="id11" x="0" y="0">
+			<name x="-10" y="-34">Uit</name>
+		</location>
+		<location id="id12" x="204" y="0">
+			<name x="194" y="-34">Aan</name>
+		</location>
+		<init ref="id11"/>
+		<transition id="id13">
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<nail x="170" y="-68"/>
+			<nail x="34" y="-68"/>
+		</transition>
+		<transition id="id14">
+			<source ref="id11"/>
+			<target ref="id12"/>
+			<nail x="34" y="68"/>
+			<nail x="170" y="68"/>
+		</transition>
+	</template>
+	<system>system machine, lamp;
+</system>
+	<queries>
+		<query>
+			<formula>E&lt;&gt; machine.b == false</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-03-12 15:20:36 +0100">
+			</result>
+		</query>
+		<query>
+			<formula>A&lt;&gt; machine.b == false</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-03-12 15:20:36 +0100">
+			</result>
+		</query>
+		<query>
+			<formula>E[] machine.b == false</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-03-12 15:20:36 +0100">
+			</result>
+		</query>
+		<query>
+			<formula>machine.b --&gt; not machine.b</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2024-03-12 15:20:36 +0100">
+			</result>
+		</query>
+		<query>
+			<formula>A[] machine.b == false</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2024-03-12 15:20:36 +0100">
+			</result>
+		</query>
+		<query>
+			<formula>A[] not deadlock</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2024-03-12 15:20:36 +0100">
+			</result>
+		</query>
+	</queries>
+</nta>

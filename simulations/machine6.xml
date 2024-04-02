@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>typedef int[0,5] id_e;
+
+id_e pass;
+
+chan give, take;</declaration>
+	<template>
+		<name>producer</name>
+		<location id="id0" x="0" y="0">
+		</location>
+		<init ref="id0"/>
+		<transition id="id1">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="select" x="76" y="-25">i:id_e</label>
+			<label kind="synchronisation" x="76" y="-8">give!</label>
+			<label kind="assignment" x="76" y="8">pass:=i</label>
+			<nail x="68" y="68"/>
+			<nail x="68" y="-68"/>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">machine</name>
+		<declaration>const int SIZE=5;
+
+id_e stack[SIZE];
+
+int[0,SIZE] HEAD=0;
+
+void push(id_e e) 
+{
+    stack[HEAD++] = e;
+}
+
+/*
+id_e pop()
+{
+    return stack[--HEAD];
+}
+*/
+
+id_e pop()
+{
+    id_e temp;
+    temp = stack[--HEAD];
+    stack[HEAD] = 0;
+    return temp;
+}
+
+bool isEmpty()
+{
+    return (HEAD==0);
+}
+
+bool isFull() 
+{
+    return (HEAD==SIZE);
+}</declaration>
+		<location id="id2" x="0" y="0">
+		</location>
+		<init ref="id2"/>
+		<transition id="id3">
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="guard" x="75" y="0">!isEmpty()</label>
+			<label kind="synchronisation" x="76" y="17">take?</label>
+			<label kind="assignment" x="75" y="-17">pass:=pop()</label>
+			<nail x="67" y="68"/>
+			<nail x="67" y="-68"/>
+		</transition>
+		<transition id="id4">
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-153" y="0">!isFull()</label>
+			<label kind="synchronisation" x="-119" y="17">give?</label>
+			<label kind="assignment" x="-161" y="-17">push(pass)</label>
+			<nail x="-68" y="68"/>
+			<nail x="-68" y="-68"/>
+		</transition>
+	</template>
+	<template>
+		<name>consumer</name>
+		<declaration>id_e result;</declaration>
+		<location id="id5" x="-34" y="0">
+		</location>
+		<location id="id6" x="68" y="0">
+			<committed/>
+		</location>
+		<init ref="id5"/>
+		<transition id="id7">
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="assignment" x="-34" y="68">result:=pass</label>
+			<nail x="68" y="68"/>
+			<nail x="-34" y="68"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="0" y="-25">take!</label>
+		</transition>
+	</template>
+	<system>system machine, producer, consumer;</system>
+	<queries>
+		<query>
+			<formula>E&lt;&gt; machine.isFull()</formula>
+			<comment/>
+		</query>
+		<query>
+			<formula>A&lt;&gt; machine.isFull()</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2024-03-14 12:26:14 +0100">
+			</result>
+		</query>
+		<query>
+			<formula>machine.isFull() --&gt; machine.isEmpty()</formula>
+			<comment/>
+			<result outcome="failure" type="quality" timestamp="2024-03-14 12:27:11 +0100">
+			</result>
+		</query>
+	</queries>
+</nta>

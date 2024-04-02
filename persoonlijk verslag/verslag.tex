@@ -61,11 +61,9 @@
 	
 	\section{Inleiding}
 	
-	Voor de cursus 'Advanced Algorithms' van de opleiding Technische Informatica heb ik het volgende verslag geschreven. Het is een verwerking en samenvatting van de lesstof. Het dient zowel als naslagwerk voor mijzelf, als het aantonen van het behalen van de leerdoelen voor de cursus. \\
-	
-Het Tinlab begon met het behandelen van het probleem van specificeren van requirements. Dit is alle design domeinen een groot probleem. Goede requirements definieren is een hoofdpijn dossier. We hebben naar systemen gekeken door het vier variabelen model. Vervolgens zijn een aantal rampen bekeken om dit model in de praktijk te gebruiken om uitspraken te doen over het falen van systemen.  \\
-
-	[geef een samenvatting van de cursus]
+	Voor de cursus 'Advanced Algorithms' van de opleiding Technische Informatica heb ik het volgende verslag geschreven. Het is een verwerking en samenvatting van de lesstof. Het dient zowel als naslagwerk voor mijzelf, als het aantonen van het behalen van de leerdoelen voor de cursus. \\	
+	Het Tinlab begon met het behandelen van het probleem van specificeren van requirements. Dit is alle design domeinen een groot probleem. Goede requirements definieren is een hoofdpijn dossier. We hebben naar systemen gekeken door het vier variabelen model. Vervolgens zijn een aantal rampen bekeken om dit model in de praktijk te gebruiken om uitspraken te doen over het falen van systemen.  \\
+	Daarna hebben we geleerd over Kripke structuren en verschillende soorten logica. Al deze kennis komt samen in de tool Uppaal. Met deze tool kunnen Kripke structuren gebouwd worden. Daarna kan met behulp van Computational Tree Logic uitspraken over de structuren geverifeerd worden.
 	
 	\newpage
 	
@@ -101,17 +99,14 @@ Het Tinlab begon met het behandelen van het probleem van specificeren van requir
 
 		Development requirements werken uit welke eisen gesteld worden aan de ontwikkeling van het systeem. Dit kan bijvoorbeeld gaan over het budget en eventuele deadlines. \par
 
-	\end{itemize}
-
-	In dit Tinlab wordt onderscheid gemaakt tussen twee verschillende types requirements:
+	\end{itemize} 
+In dit Tinlab wordt onderscheid gemaakt tussen twee verschillende types requirements:
 
 	\begin{enumerate}
 		\item System requirements
 		\item Software requirements
 	\end{enumerate}
-
-	System requirements doen uitspraken over de wereld en de fenomenen in de wereld - of ze spreken over een doel dat bereikt moet worden. Software requirements doen uitspraken over fenomenen in de machine - of over doelen die de machine moet bereiken. \par
-
+	System requirements doen uitspraken over de wereld en de fenomenen in de wereld -- of ze spreken over een doel dat bereikt moet worden. Software requirements doen uitspraken over fenomenen in de machine -- of over doelen die de machine moet bereiken. \\
 	Software kan van zichzelf niet communiceren met de buitenwereld. Een systeem communiceert met de buitenwereld middels sensoren en actuatoren. \par
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,8 +124,7 @@ Het Tinlab begon met het behandelen van het probleem van specificeren van requir
 			\item Observaties
 			\item Brainstorm sessies
 		\end{enumerate}
-
-		Het is vrijwel onvermijdelijk dat requirements strijdig zijn. Er kan bijvoorbeeld een development requirement zijn die zegt dat het product voor een bepaalde deadline af moet zijn, terwijl een andere - bijvoorbeeld architectural - requirement zegt dat een bepaalde architectuur gevolgt moet worden. Het kan zijn, dat het implementeren van zo'n architectuur niet haalbaar is binnen de deadline. In zo'n geval is een 'trade-off' noodzakelijk. De stakeholders komen dan bijvoorbeeld overeen dat een dergelijke architectuur dan achterwege gelaten kan worden. Bij dit proces is het van belang dat de eisen vanuit verschillende invalshoeken bekeken worden, dat de redenen achter de eisen meegenomen worden en dat gekeken wordt naar mogelijke alternatieve oplossingen. \par
+Het is vrijwel onvermijdelijk dat requirements strijdig zijn. Er kan bijvoorbeeld een development requirement zijn die zegt dat het product voor een bepaalde deadline af moet zijn, terwijl een andere - bijvoorbeeld architectural - requirement zegt dat een bepaalde architectuur gevolgt moet worden. Het kan zijn, dat het implementeren van zo'n architectuur niet haalbaar is binnen de deadline. In zo'n geval is een 'trade-off' noodzakelijk. De stakeholders komen dan bijvoorbeeld overeen dat een dergelijke architectuur dan achterwege gelaten kan worden. Bij dit proces is het van belang dat de eisen vanuit verschillende invalshoeken bekeken worden, dat de redenen achter de eisen meegenomen worden en dat gekeken wordt naar mogelijke alternatieve oplossingen.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Het vier variabelen model}
@@ -144,50 +138,40 @@ Het Tinlab begon met het behandelen van het probleem van specificeren van requir
 			\end{minipage}
 			\hfill
 		\end{center}
+Dit model komt vooruit het idee van twee werelden die overlappen. Er is een tastbare wereld, met verschillende fenomenen. Deze wereld is de werld waarin wij leven. In deze wereld zijn problemen die wij willen oplossen met systemen. Zo'n systeem is geen onderdeel van de tastbare wereld. Het systeem is een wereld op zichzelf. Er wel enig overlap tussen de syteem-wereld en de tastbare wereld. Het overlap tussen deze werelden is de hardware, specifiek de sensoren en actuatoren. \\
+De systeem-wereld is de software. Deze wereld heeft in zichzelf geen enkel idee van het bestaan van een ander wereld. De tastbare wereld is de omgeving waarin de het systeem functioneert (of moet functioneren). Ook deze wereld heeft geen idee van de werking van de ander. Dit is ook niet mogelijk of belangrijk, zolang de sensoren en actuatoren naar behoren functioneren. \\
+\newpage
 
-		Dit model komt vooruit het idee van twee werelden die overlappen. Er is een tastbare wereld, met verschillende fenomenen. Deze wereld is de werld waarin wij leven. In deze wereld zijn problemen die wij willen oplossen met systemen. Zo'n systeem is geen onderdeel van de tastbare wereld. Het systeem is een wereld op zichzelf. Er wel enig overlap tussen de syteem-wereld en de tastbare wereld. Het overlap tussen deze werelden is de hardware, specifiek de sensoren en actuatoren. \par
-
-		De systeem-wereld is de software. Deze wereld heeft in zichzelf geen enkel idee van het bestaan van een ander wereld. De tastbare wereld is de omgeving waarin de het systeem functioneert (of moet functioneren). Ook deze wereld heeft geen idee van de werking van de ander. Dit is ook niet mogelijk of belangrijk, zolang de sensoren en actuatoren naar behoren functioneren. \par
-
-		De 4 verschillende delen van de van de werelden - omgeving, sensoren, software en actuatoren - communiceren met elkaar met behulp van variabelen. \par
-	
+\noindent
+De 4 verschillende delen van de van de werelden - omgeving, sensoren, software en actuatoren - communiceren met elkaar met behulp van variabelen. \\
 		System requirements definiëren de relaties tussen de monitored variabelen en de controlled variabelen:
-
 		\[ SysReq \subseteq M \times C\]
-
 		Software requirements definiëren de relaties tussen de input variabelen en de output variabelen:
-
 		\[ SoftReq \subseteq I \times O \]
 		
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Monitored variabelen}
 			
-			Monitored variabelen zijn de variabelen uit de wereld die door de sensoren wordt waargenomen en gemeten. \par
-			
+			Monitored variabelen zijn de variabelen uit de wereld die door de sensoren wordt waargenomen en gemeten. \\
 			Ter voorbeeld, een Monitored variabele kan de temperatuur zijn. De omgeving is bijvoorbeeld binnenshuis, bij iemand thuis. De sensor is een temperatuursensor. De sensor meet de waarde/variabele. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Input variabelen}
 			
-			Input variabelen zijn de variabelen die door de sensor worden doorgegeven aan de software. \par
-
+			Input variabelen zijn de variabelen die door de sensor worden doorgegeven aan de software. \\
 			In het voorbeeld van de temperatuursensor, heeft de temperatuursensor de Monitored variabele omgezet in een reeks bits. Deze bits worden door de sensor naar de microcontroller gestuurd. Voor de software die op de microcontroller staat, is dit de input. In het syteem geldt deze bits als Input variabele. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Output variabelen}
 			
-			Output variabelen zijn de variabelen die door de software worden geproduceerd en worden doorgegeven aan de actuatoren. \par
-
+			Output variabelen zijn de variabelen die door de software worden geproduceerd en worden doorgegeven aan de actuatoren. \\
 			In het voorbeeld, heeft de software van de microcontroller de temperatuur - in de vorm van een aantal bits - omgezet in een output. De output is in dit voorbeeld een instructie voor een warmte element om aan te gaan, indien de temperatuur onder een bepaalde waarde zakt. De instructie voor het warmte element is de output van de software, en daarom - in dit voorbeeld - de Output variabele. \par
 
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Controlled variabelen}
 
-			Controlled variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed, of 'Controlled'. \par
-
-			In dit voorbeeld, is er door de microcontroller een instructie gegeven aan het warmte element. De microcontroller bevat de software en het warmte element is de actuator. Door de instructie van de software gaat het warmte element aan, en wordt het warmer in huis. De temperatuur stijgt. De Controlled variabele in dit voorbeeld is de temperatuur. \par
-
-			
+			Controlled variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed, of 'Controlled'. \\
+			In dit voorbeeld, is er door de microcontroller een instructie gegeven aan het warmte element. De microcontroller bevat de software en het warmte element is de actuator. Door de instructie van de software gaat het warmte element aan, en wordt het warmer in huis. De temperatuur stijgt. De Controlled variabele in dit voorbeeld is de temperatuur. \\
 			In dit voorbeeld is de Controlled variabele en de Monitored variabele dezelfde variabele, maar dat hoeft niet zo te zijn. Men kan in plaats van een warmte element, ook een lampje aansluiten, die dan aan zou gaan bij een bepaalde temperatuur. In dit geval zou de Controlled variabele het licht van het lampje zijn. \par
 
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,15 +188,13 @@ Het Tinlab begon met het behandelen van het probleem van specificeren van requir
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Gerefereerde variabelen}
 			
-			Gerefereerde variabelen zijn de variabelen uit de wereld die door de sensoren wordt waargenomen en gemeten. Deze definitie is gelijk aan die van de Monitered variabelen. Een van de aannames die het model heeft, is dat deze gelijk zijn. Het is echter nodig om onderscheid te maken om een relatie "Real-World requirements" te kunnen introduceren. Deze relatie is de relatie tussen de Gerefereerde variabelen en de Verlangde variabelen. \par
-
+			Gerefereerde variabelen zijn de variabelen uit de wereld die door de sensoren wordt waargenomen en gemeten. Deze definitie is gelijk aan die van de Monitered variabelen. Een van de aannames die het model heeft, is dat deze gelijk zijn. Het is echter nodig om onderscheid te maken om een relatie "Real-World requirements" te kunnen introduceren. Deze relatie is de relatie tussen de Gerefereerde variabelen en de Verlangde variabelen. \\
 			De Gerefereerde variabelen zijn de variabelen in de 'echte wereld', zoals de wereld is ook zonder dat het systeem werkt - of zonder dat het systeem bestaat. De Monitored variabelen zijn de variabelen die door het systeem observeert worden. Er kan pas iets geobserveerd worden, als er een systeem is om te observeren. Zonder systeem kan je dus technisch gezien geen Monitered variabelen definieren. Vandaar het onderscheid. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Verlangde variabelen}
 			
-			Verlangde variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed. Deze definitie is gelijk aan die van de Controlled variabelen. Dit is echter nodig om de relatie "Expectation" - het verwachte resultaat - tussen de Verlangde variabelen en de Controlled variabelen te definieren. \par
-
+			Verlangde variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed. Deze definitie is gelijk aan die van de Controlled variabelen. Dit is echter nodig om de relatie "Expectation" - het verwachte resultaat - tussen de Verlangde variabelen en de Controlled variabelen te definieren. \\
 			De Verlangde variabelen zijn de variabelen in de 'echte wereld', zoals de wereld is ook zonder dat het systeem werkt - of zonder dat het systeem bestaat. De Controlled variabelen zijn de variabelen die door het systeem beïnvloed worden. Er kan pas iets beïnvloed worden, als er een systeem is om te beïnvloeden. Zonder systeem kan je dus technisch gezien geen Beïnvloede variabelen definieren. Vandaar het onderscheid. \cite{icsoft-pt16} \par
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -296,10 +278,8 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 				\paragraph{Oorzaak}
 
-				Het ongeluk is veroorzaakt door een 'positieve feedback loop' - een reactie die zichzelf kon voeden. Een gerenomeerde Sovjet wetenschapper - Valery Alekseyevich Legasov - zegt dat de ramp te wijden is aan (onkundig) menselijk handelen in combinatie met ontwerpfouten. \par
-
-				In de reactor waren twee koelsystemen aanwezig. Het koelmiddel had als primaire functie om de neutronen - die tijdens de kernreactie vrijkomen - (deels) te absorberen, om zo een explosie te voorkomen. Een 'void' in het koelmiddel, laat de absorberende functie afnemen. Hierdoor neemt het aantal neutronen snel toe, en ook de energie van de reactor. Een hogere energie in de reactor laat het koelmiddel koken, wat zorgt voor stoomvorming. Dit zorgt op zijn beurt weer een vermindert aborberend effect. Dit zichzelf-versterkend effect heeft uiteindelijk tot het ongeluk geleid. \par
-
+				Het ongeluk is veroorzaakt door een 'positieve feedback loop' - een reactie die zichzelf kon voeden. Een gerenomeerde Sovjet wetenschapper - Valery Alekseyevich Legasov - zegt dat de ramp te wijden is aan (onkundig) menselijk handelen in combinatie met ontwerpfouten. \\
+				In de reactor waren twee koelsystemen aanwezig. Het koelmiddel had als primaire functie om de neutronen - die tijdens de kernreactie vrijkomen - (deels) te absorberen, om zo een explosie te voorkomen. Een 'void' in het koelmiddel, laat de absorberende functie afnemen. Hierdoor neemt het aantal neutronen snel toe, en ook de energie van de reactor. Een hogere energie in de reactor laat het koelmiddel koken, wat zorgt voor stoomvorming. Dit zorgt op zijn beurt weer een vermindert aborberend effect. Dit zichzelf-versterkend effect heeft uiteindelijk tot het ongeluk geleid. \\
 				In het licht van het vier variabelen model, is hier een fout in de omgeving. Door natuurkundige processen - die door in de omgeving aanwezige stoffen mogelijk werden gemaakt - kon de ramp plaats vinden. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -315,10 +295,8 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 				\paragraph{Oorzaak}
 
-					Het falen werd veroorzaakt door de computer die verantwoordelijk was van de berekeningen. Deze computer's interne klok had een kleine afwijking, waardoor na 100 uur op 100 uur en 0.3433 seconden stond. Naarmate de tijd vorderde, werd de foutmarge groter. \cite{skeel1992roundoff} Dit lijkt een klein detail, maar met de snelheden van de raketten die de het systeem moet onderscheppen, heeft dit grote invloed.  \par
-
-					Twee weken voor het incident rapporteerde de Israëliers aan de Amerikanen dat wanneer het systeem 8 uur achtereen draaide, er onnauwkeurigheden optraden. De software werd hierop aangepast, om de nauwkeurigheid te verbeteren. Deze wijziging bereikte Dhahran echter pas de dag na het ongeluk - op 26 februari. \cite{general1992patriot} \par
-
+					Het falen werd veroorzaakt door de computer die verantwoordelijk was van de berekeningen. Deze computer's interne klok had een kleine afwijking, waardoor na 100 uur op 100 uur en 0.3433 seconden stond. Naarmate de tijd vorderde, werd de foutmarge groter. \cite{skeel1992roundoff} Dit lijkt een klein detail, maar met de snelheden van de raketten die de het systeem moet onderscheppen, heeft dit grote invloed.  \\
+					Twee weken voor het incident rapporteerde de Israëliers aan de Amerikanen dat wanneer het systeem 8 uur achtereen draaide, er onnauwkeurigheden optraden. De software werd hierop aangepast, om de nauwkeurigheid te verbeteren. Deze wijziging bereikte Dhahran echter pas de dag na het ongeluk - op 26 februari. \cite{general1992patriot} \\
 					Met oog op het vier variabelen model, kan gesteld worden dat bij het Patriot Missile Defense System sprake was van een software fout. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -334,16 +312,11 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 				\paragraph{Oorzaak}
 
-					De Hitomi had een aantal systemen aan boord om de orientatie van de satelliet te detecteren en te handhaven. Bij deze ramp zijn twee van deze systemen betrokken: het 'star tracker' systeem en het systeem dat gebruik maakt van gyroscopen. \par
-
-					 Tijdens het draaien, trad er een fout op in het standaard orientatie detectie systeem - de 'star tracker' - die ervoor zorgde dat de satelliet overschakelde naar de gyroscopen. Deze gyroscopen gaven aan een rotatie van 20 graden per uur te detecteren, hoewel de satelliet niet met die snelheid roteerde. De 'reaction wheels' werden in werking gesteld om de gedetecteerde rotatie tegen te gaan. \par
-
-					Dit zorgde voor een positieve feedback. Door de reaction wheels ging de Hitomi sneller roteren. De satelliet had een veiligheidsmaatregel die moest voorkwam dat de satelliet te snel roteerde om zijn as. Voor het naar behoren functioneren van deze veiligheidsmaatregel was het echter nodig dat het orientatie detectie systeem naar behoren functioneerde. Omdat dit niet het geval was, faalde de veiligheidsmaatregel. \par
-
-					Hierop schakelde het systeem een 'safe mode' in. Hierin werden motoren ingeschakeld, waarmee werd geprobeerd de rotatie te stoppen. Omdat er eerder een verkeerd commando is geupload naar de satelliet, werd de rotatie niet afgeremd, maar versneld. \par
-
-					Ten minsten 10 onderdelen, waaronder de zonnepanelen die de Hitomi van stroom voorzagen, braken af. Sommige instrumenten aan boord waren al tientallen jaren in ontwikkeling. De JAXA hoopte op levenduur van 10 jaar. Hoewel de Hitomi niet compleet nutteloos is gebleken, had men op meer gehoopt. \cite{witze2016software} \par 
-
+					De Hitomi had een aantal systemen aan boord om de orientatie van de satelliet te detecteren en te handhaven. Bij deze ramp zijn twee van deze systemen betrokken: het 'star tracker' systeem en het systeem dat gebruik maakt van gyroscopen. \\
+					 Tijdens het draaien, trad er een fout op in het standaard orientatie detectie systeem - de 'star tracker' - die ervoor zorgde dat de satelliet overschakelde naar de gyroscopen. Deze gyroscopen gaven aan een rotatie van 20 graden per uur te detecteren, hoewel de satelliet niet met die snelheid roteerde. De 'reaction wheels' werden in werking gesteld om de gedetecteerde rotatie tegen te gaan. \\
+					Dit zorgde voor een positieve feedback. Door de reaction wheels ging de Hitomi sneller roteren. De satelliet had een veiligheidsmaatregel die moest voorkwam dat de satelliet te snel roteerde om zijn as. Voor het naar behoren functioneren van deze veiligheidsmaatregel was het echter nodig dat het orientatie detectie systeem naar behoren functioneerde. Omdat dit niet het geval was, faalde de veiligheidsmaatregel. \\
+					Hierop schakelde het systeem een 'safe mode' in. Hierin werden motoren ingeschakeld, waarmee werd geprobeerd de rotatie te stoppen. Omdat er eerder een verkeerd commando is geupload naar de satelliet, werd de rotatie niet afgeremd, maar versneld. \\
+					Ten minsten 10 onderdelen, waaronder de zonnepanelen die de Hitomi van stroom voorzagen, braken af. Sommige instrumenten aan boord waren al tientallen jaren in ontwikkeling. De JAXA hoopte op levenduur van 10 jaar. Hoewel de Hitomi niet compleet nutteloos is gebleken, had men op meer gehoopt. \cite{witze2016software} \\
 					De fout die deze ramp veroorzaakte zou - in het licht van het vier variabelen model - gecategoriseerd moeten worden als sensorfout. Het gaat hier immers om het foutief dectecteren van de orientatie en de rotatie, door de gyroscopen. Men zou overigens ook kunnen beargumenteren dat het hier gaat om een ontwerpfout die betrekking heeft op de omgeving. In de eerste plaats faalde het 'star track' systeem. Dit was een werd veroorzaakt door een glich die optrad wanneer de satelliet de 'South Atlantic Anomaly' passeerde. Op deze plek is de atmosfeer relatief laag, waardoor de satelliet op deze plek extra wordt blootgesteld aan straling. Deze glitch zou geen fataal probleem moeten zijn, maar heeft wel alle andere problemen mogelijk gemaakt. Er is in het ontwerp onvoldoende rekening gehouden met de extra straling waaraan het systeem wordt blootgesteld. \par
 				
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -359,10 +332,9 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 				\paragraph{Oorzaak}
 
-					Na de maanden lange reis kwam het object aan bij Mars, en kon de procedure begonnen worden waarmee de satelliet in zijn baan wordt gebracht. De MCO was asymetrisch van vorm. Door een kracht die ook wel Solar Radiation Pressure wordt genoemd, is de satelliet gaan draaien. Deze kracht wordt veroorzaakt door de zon, die straling afschiet op de satelliet die hierdoor uit zijn baan kan geraken. \cite{yousef2022balancing} Om voor deze SRP te corrigeren zijn flywheels tussen de 10 tot 14 keer vaker geactiveerd dan verwacht. Het systeem dat hiervoor verantwoordelijk was, is gebouwd door een andere partij dan de partij die de interface van het systeem gebruikte (in de software). Door onvoldoende testen en slechte communicatie kon het voorkomen dat het verantwoordelijke systeem Engelse eenheden gebruikte, in plaats van metrische eenheden. \par
-					Het groter dan verwachte gebruik van het systeem in combinatie met de fout in eenheid, heeft geresulteerd in een koerswijziging. De satelliet kwam ongeveer 170 kilometer lager aanvliegen, dan gepland. Dit werd de missie fataal. \cite{stephenson1999mars} \par
-
-					De fout in communicatie is een grote! Dat het bij NASA voorkwam, maakt het er niet beter op. In het licht van het vier-variabelen model, is hier sprake van een fout in de software. Er is hier sprake van onjuist gebruik van de interface, bij het programmeren. Da
+					Na de maanden lange reis kwam het object aan bij Mars, en kon de procedure begonnen worden waarmee de satelliet in zijn baan wordt gebracht. De MCO was asymetrisch van vorm. Door een kracht die ook wel Solar Radiation Pressure wordt genoemd, is de satelliet gaan draaien. Deze kracht wordt veroorzaakt door de zon, die straling afschiet op de satelliet die hierdoor uit zijn baan kan geraken. \cite{yousef2022balancing} Om voor deze SRP te corrigeren zijn flywheels tussen de 10 tot 14 keer vaker geactiveerd dan verwacht. Het systeem dat hiervoor verantwoordelijk was, is gebouwd door een andere partij dan de partij die de interface van het systeem gebruikte (in de software). Door onvoldoende testen en slechte communicatie kon het voorkomen dat het verantwoordelijke systeem Engelse eenheden gebruikte, in plaats van metrische eenheden. \\
+					Het groter dan verwachte gebruik van het systeem in combinatie met de fout in eenheid, heeft geresulteerd in een koerswijziging. De satelliet kwam ongeveer 170 kilometer lager aanvliegen, dan gepland. Dit werd de missie fataal. \cite{stephenson1999mars} \\
+					De fout in communicatie is een grote! Dat het bij NASA voorkwam, maakt het er niet beter op. In het licht van het vier-variabelen model, is hier sprake van een fout in de software. Er is hier sprake van onjuist gebruik van de interface, bij het programmeren. Dat betekent dat het hier gaat om een softwarefout.
 		
 	\newpage
 	

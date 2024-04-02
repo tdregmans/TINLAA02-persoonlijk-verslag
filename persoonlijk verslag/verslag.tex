@@ -124,7 +124,7 @@ In dit Tinlab wordt onderscheid gemaakt tussen twee verschillende types requirem
 			\item Observaties
 			\item Brainstorm sessies
 		\end{enumerate}
-Het is vrijwel onvermijdelijk dat requirements strijdig zijn. Er kan bijvoorbeeld een development requirement zijn die zegt dat het product voor een bepaalde deadline af moet zijn, terwijl een andere - bijvoorbeeld architectural - requirement zegt dat een bepaalde architectuur gevolgt moet worden. Het kan zijn, dat het implementeren van zo'n architectuur niet haalbaar is binnen de deadline. In zo'n geval is een 'trade-off' noodzakelijk. De stakeholders komen dan bijvoorbeeld overeen dat een dergelijke architectuur dan achterwege gelaten kan worden. Bij dit proces is het van belang dat de eisen vanuit verschillende invalshoeken bekeken worden, dat de redenen achter de eisen meegenomen worden en dat gekeken wordt naar mogelijke alternatieve oplossingen.
+Het is vrijwel onvermijdelijk dat requirements strijdig zijn. Er kan bijvoorbeeld een development requirement zijn die zegt dat het product voor een bepaalde deadline af moet zijn, terwijl een andere -- bijvoorbeeld architectural -- requirement zegt dat een bepaalde architectuur gevolgt moet worden. Het kan zijn, dat het implementeren van zo'n architectuur niet haalbaar is binnen de deadline. In zo'n geval is een 'trade-off' noodzakelijk. De stakeholders komen dan bijvoorbeeld overeen dat een dergelijke architectuur dan achterwege gelaten kan worden. Bij dit proces is het van belang dat de eisen vanuit verschillende invalshoeken bekeken worden, dat de redenen achter de eisen meegenomen worden en dat gekeken wordt naar mogelijke alternatieve oplossingen.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Het vier variabelen model}
@@ -143,7 +143,7 @@ De systeem-wereld is de software. Deze wereld heeft in zichzelf geen enkel idee 
 \newpage
 
 \noindent
-De 4 verschillende delen van de van de werelden - omgeving, sensoren, software en actuatoren - communiceren met elkaar met behulp van variabelen. \\
+De 4 verschillende delen van de van de werelden -- omgeving, sensoren, software en actuatoren -- communiceren met elkaar met behulp van variabelen. \\
 		System requirements definiëren de relaties tussen de monitored variabelen en de controlled variabelen:
 		\[ SysReq \subseteq M \times C\]
 		Software requirements definiëren de relaties tussen de input variabelen en de output variabelen:
@@ -165,7 +165,7 @@ De 4 verschillende delen van de van de werelden - omgeving, sensoren, software e
 			\subsubsection{Output variabelen}
 			
 			Output variabelen zijn de variabelen die door de software worden geproduceerd en worden doorgegeven aan de actuatoren. \\
-			In het voorbeeld, heeft de software van de microcontroller de temperatuur - in de vorm van een aantal bits - omgezet in een output. De output is in dit voorbeeld een instructie voor een warmte element om aan te gaan, indien de temperatuur onder een bepaalde waarde zakt. De instructie voor het warmte element is de output van de software, en daarom - in dit voorbeeld - de Output variabele. \par
+			In het voorbeeld, heeft de software van de microcontroller de temperatuur -- in de vorm van een aantal bits -- omgezet in een output. De output is in dit voorbeeld een instructie voor een warmte element om aan te gaan, indien de temperatuur onder een bepaalde waarde zakt. De instructie voor het warmte element is de output van de software, en daarom -- in dit voorbeeld -- de Output variabele. \par
 
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Controlled variabelen}
@@ -177,7 +177,7 @@ De 4 verschillende delen van de van de werelden - omgeving, sensoren, software e
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Het zes variabelen model}
 
-		Bij gebruik van het vier variabelen model, kunnen de ontwerpkeuzes die betrekking hebben op concretiseren van de context, niet gebruikt worden om bij het toepassen van het systeem in een nieuwe omgeving. Dit is het geval omdat de context - in andere woorden, de omgeving - één van de variabelen is, terwijl die vaak nog niet goed is gedefinieerd. Het zes variabelen model tracht dit te verhelpen door twee extra variabelen toe te voegen: \par
+		Bij gebruik van het vier variabelen model, kunnen de ontwerpkeuzes die betrekking hebben op concretiseren van de context, niet gebruikt worden om bij het toepassen van het systeem in een nieuwe omgeving. Dit is het geval omdat de context -- in andere woorden, de omgeving -- één van de variabelen is, terwijl die vaak nog niet goed is gedefinieerd. Het zes variabelen model tracht dit te verhelpen door twee extra variabelen toe te voegen: \par
 
 		\begin{enumerate}
 			\setcounter{enumi}{4}
@@ -189,13 +189,13 @@ De 4 verschillende delen van de van de werelden - omgeving, sensoren, software e
 			\subsubsection{Gerefereerde variabelen}
 			
 			Gerefereerde variabelen zijn de variabelen uit de wereld die door de sensoren wordt waargenomen en gemeten. Deze definitie is gelijk aan die van de Monitered variabelen. Een van de aannames die het model heeft, is dat deze gelijk zijn. Het is echter nodig om onderscheid te maken om een relatie "Real-World requirements" te kunnen introduceren. Deze relatie is de relatie tussen de Gerefereerde variabelen en de Verlangde variabelen. \\
-			De Gerefereerde variabelen zijn de variabelen in de 'echte wereld', zoals de wereld is ook zonder dat het systeem werkt - of zonder dat het systeem bestaat. De Monitored variabelen zijn de variabelen die door het systeem observeert worden. Er kan pas iets geobserveerd worden, als er een systeem is om te observeren. Zonder systeem kan je dus technisch gezien geen Monitered variabelen definieren. Vandaar het onderscheid. \par
+			De Gerefereerde variabelen zijn de variabelen in de 'echte wereld', zoals de wereld is ook zonder dat het systeem werkt -- of zonder dat het systeem bestaat. De Monitored variabelen zijn de variabelen die door het systeem observeert worden. Er kan pas iets geobserveerd worden, als er een systeem is om te observeren. Zonder systeem kan je dus technisch gezien geen Monitered variabelen definieren. Vandaar het onderscheid. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Verlangde variabelen}
 			
-			Verlangde variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed. Deze definitie is gelijk aan die van de Controlled variabelen. Dit is echter nodig om de relatie "Expectation" - het verwachte resultaat - tussen de Verlangde variabelen en de Controlled variabelen te definieren. \\
-			De Verlangde variabelen zijn de variabelen in de 'echte wereld', zoals de wereld is ook zonder dat het systeem werkt - of zonder dat het systeem bestaat. De Controlled variabelen zijn de variabelen die door het systeem beïnvloed worden. Er kan pas iets beïnvloed worden, als er een systeem is om te beïnvloeden. Zonder systeem kan je dus technisch gezien geen Beïnvloede variabelen definieren. Vandaar het onderscheid. \cite{icsoft-pt16} \par
+			Verlangde variabelen zijn de variabelen in de omgeving die door de actuatoren worden beïnvloed. Deze definitie is gelijk aan die van de Controlled variabelen. Dit is echter nodig om de relatie "Expectation" -- het verwachte resultaat -- tussen de Verlangde variabelen en de Controlled variabelen te definieren. \\
+			De Verlangde variabelen zijn de variabelen in de 'echte wereld', zoals de wereld is ook zonder dat het systeem werkt -- of zonder dat het systeem bestaat. De Controlled variabelen zijn de variabelen die door het systeem beïnvloed worden. Er kan pas iets beïnvloed worden, als er een systeem is om te beïnvloeden. Zonder systeem kan je dus technisch gezien geen Beïnvloede variabelen definieren. Vandaar het onderscheid. \cite{icsoft-pt16} \par
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Rampen}
@@ -207,7 +207,7 @@ De 4 verschillende delen van de van de werelden - omgeving, sensoren, software e
 
 				\paragraph{Beschrijving}
 
-				In de Verenigde Staten vonden in de jaren 80 een serie ongelukken plaats, waarbij verschillende patienten een dodelijke dosis straling kreeg toegediend met de Therac-25. Anderen raakten zwaar-gewond. De Therac-25 verschilde met zijn voorloper - de Therac-20 - op een belangrijke manier. De Therac-20 is ook een computergestuurde machine, maar heeft ook hardware veiligheidsmaatregelen. In de Therac-25 zijn deze hardware veiligheidsmaatregelen verdwenen en vervangen door software die hetzelfde effect zouden moeten hebben. \cite{thomas1994story} \par
+				In de Verenigde Staten vonden in de jaren 80 een serie ongelukken plaats, waarbij verschillende patienten een dodelijke dosis straling kreeg toegediend met de Therac-25. Anderen raakten zwaar-gewond. De Therac-25 verschilde met zijn voorloper -- de Therac-20 -- op een belangrijke manier. De Therac-20 is ook een computergestuurde machine, maar heeft ook hardware veiligheidsmaatregelen. In de Therac-25 zijn deze hardware veiligheidsmaatregelen verdwenen en vervangen door software die hetzelfde effect zouden moeten hebben. \cite{thomas1994story} \par
 
 				\paragraph{Datum en plaats}
 
@@ -222,7 +222,7 @@ De 4 verschillende delen van de van de werelden - omgeving, sensoren, software e
 						
 						Dit is een ontwerp fout. In het licht van het vier-variabelen model, zou dit ofwel een Software fout, ofwel een Actuator fout kunnen zijn. Men zou kunnen beargumenteren dat dit een Software fout is omdat de hardware veiligheidsmaatregelen die zijn verwijderd, in de software zouden moeten terugkomen. Dit is niet het geval. Men zou ook kunnen beargumenteren dat het hier gaat om een falende Actuator, omdat de benodigde veiligheidshardware niet aanwezig is (volgens het ontwerp). \par
 
-					\item De Therac-25 had cryptisch foutmelding, die vaak enkel het woord "malfunction" bevatten, samen met een error code - een getal van 1 tot 64. Het was voor de gebruiker onduidelijk wat deze betekenden. Het was niet duidelijk of een dergelijke foutmelding de patient in gevaar kon brengen. Ook in de handleiding wordt niet gesproken over foutcodes. \par
+					\item De Therac-25 had cryptisch foutmelding, die vaak enkel het woord "malfunction" bevatten, samen met een error code -- een getal van 1 tot 64. Het was voor de gebruiker onduidelijk wat deze betekenden. Het was niet duidelijk of een dergelijke foutmelding de patient in gevaar kon brengen. Ook in de handleiding wordt niet gesproken over foutcodes. \par
 
 						Men moet nooit een foutmelding negeren; zeker niet als men werkt met een machine die een levensgevaarlijke dosis kan toedienen aan machines. De vraag is of de medewerkers (die de Therac-25 gebruikte) te verwijten valt, dat ze de foutmeldingen negeerden. De onduidelijkheid van de betekenis van de foutmeldingen, zowel in de melding zelf als in de handleiding, is een fout aan de kant van de fabrikant. Dit is opnieuw een ontwerpfout. De machine had met de foutmelding een uitgebreide beschrijving van de fout moeten geven. Daarom is het een Software fout. \par
 
@@ -251,13 +251,13 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 				
 				\begin{itemize}
 
-					\item De Boeing 737-800 heeft twee hoogtemeters aan boord. Er is sprake van een redundante functie: Standaard wordt de waarde van de linker sensor genomen. In het geval van een foutieve waarde, kan de rechter sensor gebruikt worden. In zo'n geval moet de waarde van de linker sensor wel als foutief gezien worden. In dit geval gaf de linker hoogtemeter een waarde van -8 voet, maar het systeem herkende dit niet als foutieve waarde. Het opvallende is dat de sensorwaarden van beide sensoren getoond werden op de displays. De piloten hebben echter het verschil niet - of te laat - opgemerkt.
+					\item De Boeing 737-800 heeft twee hoogtemeters aan boord. Er is sprake van een redundante functie: Standaard wordt de waarde van de linker sensor genomen. In het geval van een foutieve waarde, kan de rechter sensor gebruikt worden. In zo'n geval moet de waarde van de linker sensor wel als foutief gezien worden. In dit geval gaf de linker hoogtemeter een waarde van -8 voet, maar het systeem herkende dit niet als foutieve waarde. Het opvallende is dat de sensorwaarden van beide sensoren getoond werden op de displays. De piloten hebben echter het verschil niet -- of te laat -- opgemerkt.
 
-					\item Op die bewuste dag, was de automatische piloot ingeschakeld. Het systeem gebruikte daarvoor de linker hoogtemeter, omdat deze waarde niet als foutief werd herkend. Omdat de automatische piloot de incorrecte waarde doorkreeg, begon het met het inzetten van de landing. Dit gebeurt normaal gesproken pas als het vliegtuig op een hoogte van minder dan 27 voet vliegt. Dit werd op het primaire display getoond met het codewoord 'RETARD' - de naam van deze modus. In deze modus wordt de snelheid flink verlaagd. De automatische piloot probeerde het vliegtuig in de lucht te houden, door de neus van het vliegtuig omhoog te duwen, om zo meer draagkracht te creeëren. Hier werd door de piloten niet op gereageerd.
+					\item Op die bewuste dag, was de automatische piloot ingeschakeld. Het systeem gebruikte daarvoor de linker hoogtemeter, omdat deze waarde niet als foutief werd herkend. Omdat de automatische piloot de incorrecte waarde doorkreeg, begon het met het inzetten van de landing. Dit gebeurt normaal gesproken pas als het vliegtuig op een hoogte van minder dan 27 voet vliegt. Dit werd op het primaire display getoond met het codewoord 'RETARD' -- de naam van deze modus. In deze modus wordt de snelheid flink verlaagd. De automatische piloot probeerde het vliegtuig in de lucht te houden, door de neus van het vliegtuig omhoog te duwen, om zo meer draagkracht te creeëren. Hier werd door de piloten niet op gereageerd.
 
 					\item Toen het vliegtuig op een hoogte van 460 voet vloog, en het almaar snelheid en hoogte verloor, kwam het laatste waarschuwing signaal: De zogenaamde 'stick shaker'. In zo'n geval waarschuwt het vliegtuig de piloot dat het vliegtuig stagneert en alle draagkracht dreigt te verliezen door de stuurstok te schudden. De piloot moet de motoren op volle kracht zetten, en de stuurstok naar zich toe trekken.
 
-					\item De eerste officier reageerde op de 'stick shaker' op de voorgeschreven wijze. Hij zette de motoren op volle kracht. De kapitein nam de besturing over, waardoor de reactie van de eerste officier overschreven werd. Dit heeft er waarschijnlijk toe geleid dat de motoren - door de automatische piloot die niet werd uitgeschakeld - weer terug schakelde naar het oude niveau, waarmee het vliegtuig doorging met stagneren. Op dat moment had het vliegtuig een hoogte van 350 voet. Dat bleek onvoldoende voor herstel.
+					\item De eerste officier reageerde op de 'stick shaker' op de voorgeschreven wijze. Hij zette de motoren op volle kracht. De kapitein nam de besturing over, waardoor de reactie van de eerste officier overschreven werd. Dit heeft er waarschijnlijk toe geleid dat de motoren -- door de automatische piloot die niet werd uitgeschakeld -- weer terug schakelde naar het oude niveau, waarmee het vliegtuig doorging met stagneren. Op dat moment had het vliegtuig een hoogte van 350 voet. Dat bleek onvoldoende voor herstel.
 
 			De Onderzoeksraad voor Veiligheid stelt dat het ongeluk is veroorzaakt door het niet-correct functioneren van de linker hoogtemeter. Deze zorgde ervoor dat de automatische piloot het vermogen te vroeg liet teruglopen, wat een te groot snelheidsverlies veroorzaakte.
 
@@ -274,20 +274,20 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 				\paragraph{Datum en plaats}
 
-					Het ongeluk vond plaats in noord Oekraine. Het was in die tijd onderdeel van de Sovjet-Unie. Op 26 april 1986 om 01:23 startte het experiment dat het ongeluk veroorzaakte. De gevolgen voor mens en milieu waren - en zijn nog steeds - desastreus. \cite{BERESFORD201677} \par
+					Het ongeluk vond plaats in noord Oekraine. Het was in die tijd onderdeel van de Sovjet-Unie. Op 26 april 1986 om 01:23 startte het experiment dat het ongeluk veroorzaakte. De gevolgen voor mens en milieu waren -- en zijn nog steeds -- desastreus. \cite{BERESFORD201677} \par
 
 				\paragraph{Oorzaak}
 
-				Het ongeluk is veroorzaakt door een 'positieve feedback loop' - een reactie die zichzelf kon voeden. Een gerenomeerde Sovjet wetenschapper - Valery Alekseyevich Legasov - zegt dat de ramp te wijden is aan (onkundig) menselijk handelen in combinatie met ontwerpfouten. \\
-				In de reactor waren twee koelsystemen aanwezig. Het koelmiddel had als primaire functie om de neutronen - die tijdens de kernreactie vrijkomen - (deels) te absorberen, om zo een explosie te voorkomen. Een 'void' in het koelmiddel, laat de absorberende functie afnemen. Hierdoor neemt het aantal neutronen snel toe, en ook de energie van de reactor. Een hogere energie in de reactor laat het koelmiddel koken, wat zorgt voor stoomvorming. Dit zorgt op zijn beurt weer een vermindert aborberend effect. Dit zichzelf-versterkend effect heeft uiteindelijk tot het ongeluk geleid. \\
-				In het licht van het vier variabelen model, is hier een fout in de omgeving. Door natuurkundige processen - die door in de omgeving aanwezige stoffen mogelijk werden gemaakt - kon de ramp plaats vinden. \par
+				Het ongeluk is veroorzaakt door een 'positieve feedback loop' -- een reactie die zichzelf kon voeden. Een gerenomeerde Sovjet wetenschapper -- Valery Alekseyevich Legasov -- zegt dat de ramp te wijden is aan (onkundig) menselijk handelen in combinatie met ontwerpfouten. \\
+				In de reactor waren twee koelsystemen aanwezig. Het koelmiddel had als primaire functie om de neutronen -- die tijdens de kernreactie vrijkomen -- (deels) te absorberen, om zo een explosie te voorkomen. Een 'void' in het koelmiddel, laat de absorberende functie afnemen. Hierdoor neemt het aantal neutronen snel toe, en ook de energie van de reactor. Een hogere energie in de reactor laat het koelmiddel koken, wat zorgt voor stoomvorming. Dit zorgt op zijn beurt weer een vermindert aborberend effect. Dit zichzelf-versterkend effect heeft uiteindelijk tot het ongeluk geleid. \\
+				In het licht van het vier variabelen model, is hier een fout in de omgeving. Door natuurkundige processen -- die door in de omgeving aanwezige stoffen mogelijk werden gemaakt -- kon de ramp plaats vinden. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Patriot Missile Defense System}
 
 				\paragraph{Beschrijving}
 
-					In de Golf Oorlog had de Verenigde Staten Patriot Missile Defense Systems gestationeerd in Dhahran, Saudi Arabia - haar bondgenoot. Door een systeemfout faalde het systeem in het neerhalen van een raket, wat resulteerde in 28 doden en honderden gewonden onder de gestationeerde Amerikaanse soldaten. \par
+					In de Golf Oorlog had de Verenigde Staten Patriot Missile Defense Systems gestationeerd in Dhahran, Saudi Arabia -- haar bondgenoot. Door een systeemfout faalde het systeem in het neerhalen van een raket, wat resulteerde in 28 doden en honderden gewonden onder de gestationeerde Amerikaanse soldaten. \par
 
 				\paragraph{Datum en plaats}
 
@@ -296,7 +296,7 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 				\paragraph{Oorzaak}
 
 					Het falen werd veroorzaakt door de computer die verantwoordelijk was van de berekeningen. Deze computer's interne klok had een kleine afwijking, waardoor na 100 uur op 100 uur en 0.3433 seconden stond. Naarmate de tijd vorderde, werd de foutmarge groter. \cite{skeel1992roundoff} Dit lijkt een klein detail, maar met de snelheden van de raketten die de het systeem moet onderscheppen, heeft dit grote invloed.  \\
-					Twee weken voor het incident rapporteerde de Israëliers aan de Amerikanen dat wanneer het systeem 8 uur achtereen draaide, er onnauwkeurigheden optraden. De software werd hierop aangepast, om de nauwkeurigheid te verbeteren. Deze wijziging bereikte Dhahran echter pas de dag na het ongeluk - op 26 februari. \cite{general1992patriot} \\
+					Twee weken voor het incident rapporteerde de Israëliers aan de Amerikanen dat wanneer het systeem 8 uur achtereen draaide, er onnauwkeurigheden optraden. De software werd hierop aangepast, om de nauwkeurigheid te verbeteren. Deze wijziging bereikte Dhahran echter pas de dag na het ongeluk -- op 26 februari. \cite{general1992patriot} \\
 					Met oog op het vier variabelen model, kan gesteld worden dat bij het Patriot Missile Defense System sprake was van een software fout. \par
 			
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -308,23 +308,23 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 				\paragraph{Datum en plaats}
 
-					De lancering vond plaats op 17 februari 2016. Zo'n vijf weken later - op 26 maart om 3:01 's morgens - begon de Hitomi te draaien om een specifiek deel van het universum te observeren.
+					De lancering vond plaats op 17 februari 2016. Zo'n vijf weken later -- op 26 maart om 3:01 's morgens -- begon de Hitomi te draaien om een specifiek deel van het universum te observeren.
 
 				\paragraph{Oorzaak}
 
 					De Hitomi had een aantal systemen aan boord om de orientatie van de satelliet te detecteren en te handhaven. Bij deze ramp zijn twee van deze systemen betrokken: het 'star tracker' systeem en het systeem dat gebruik maakt van gyroscopen. \\
-					 Tijdens het draaien, trad er een fout op in het standaard orientatie detectie systeem - de 'star tracker' - die ervoor zorgde dat de satelliet overschakelde naar de gyroscopen. Deze gyroscopen gaven aan een rotatie van 20 graden per uur te detecteren, hoewel de satelliet niet met die snelheid roteerde. De 'reaction wheels' werden in werking gesteld om de gedetecteerde rotatie tegen te gaan. \\
+					 Tijdens het draaien, trad er een fout op in het standaard orientatie detectie systeem -- de 'star tracker' -- die ervoor zorgde dat de satelliet overschakelde naar de gyroscopen. Deze gyroscopen gaven aan een rotatie van 20 graden per uur te detecteren, hoewel de satelliet niet met die snelheid roteerde. De 'reaction wheels' werden in werking gesteld om de gedetecteerde rotatie tegen te gaan. \\
 					Dit zorgde voor een positieve feedback. Door de reaction wheels ging de Hitomi sneller roteren. De satelliet had een veiligheidsmaatregel die moest voorkwam dat de satelliet te snel roteerde om zijn as. Voor het naar behoren functioneren van deze veiligheidsmaatregel was het echter nodig dat het orientatie detectie systeem naar behoren functioneerde. Omdat dit niet het geval was, faalde de veiligheidsmaatregel. \\
 					Hierop schakelde het systeem een 'safe mode' in. Hierin werden motoren ingeschakeld, waarmee werd geprobeerd de rotatie te stoppen. Omdat er eerder een verkeerd commando is geupload naar de satelliet, werd de rotatie niet afgeremd, maar versneld. \\
 					Ten minsten 10 onderdelen, waaronder de zonnepanelen die de Hitomi van stroom voorzagen, braken af. Sommige instrumenten aan boord waren al tientallen jaren in ontwikkeling. De JAXA hoopte op levenduur van 10 jaar. Hoewel de Hitomi niet compleet nutteloos is gebleken, had men op meer gehoopt. \cite{witze2016software} \\
-					De fout die deze ramp veroorzaakte zou - in het licht van het vier variabelen model - gecategoriseerd moeten worden als sensorfout. Het gaat hier immers om het foutief dectecteren van de orientatie en de rotatie, door de gyroscopen. Men zou overigens ook kunnen beargumenteren dat het hier gaat om een ontwerpfout die betrekking heeft op de omgeving. In de eerste plaats faalde het 'star track' systeem. Dit was een werd veroorzaakt door een glich die optrad wanneer de satelliet de 'South Atlantic Anomaly' passeerde. Op deze plek is de atmosfeer relatief laag, waardoor de satelliet op deze plek extra wordt blootgesteld aan straling. Deze glitch zou geen fataal probleem moeten zijn, maar heeft wel alle andere problemen mogelijk gemaakt. Er is in het ontwerp onvoldoende rekening gehouden met de extra straling waaraan het systeem wordt blootgesteld. \par
+					De fout die deze ramp veroorzaakte zou -- in het licht van het vier variabelen model -- gecategoriseerd moeten worden als sensorfout. Het gaat hier immers om het foutief dectecteren van de orientatie en de rotatie, door de gyroscopen. Men zou overigens ook kunnen beargumenteren dat het hier gaat om een ontwerpfout die betrekking heeft op de omgeving. In de eerste plaats faalde het 'star track' systeem. Dit was een werd veroorzaakt door een glich die optrad wanneer de satelliet de 'South Atlantic Anomaly' passeerde. Op deze plek is de atmosfeer relatief laag, waardoor de satelliet op deze plek extra wordt blootgesteld aan straling. Deze glitch zou geen fataal probleem moeten zijn, maar heeft wel alle andere problemen mogelijk gemaakt. Er is in het ontwerp onvoldoende rekening gehouden met de extra straling waaraan het systeem wordt blootgesteld. \par
 				
 			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\subsubsection{Mars Climate Orbiter}
 
 				\paragraph{Beschrijving}
 
-					De NASA lanceerde in 1998 de Mars Climate Orbiter. De formele naam is 'Mars Surveyor '98 Orbiter'. Het doel was om informatie te verzamelen over het klimaat en de atmosfeer op Mars. Daarnaast moest het apparaat dienen als tussenstation voor communicatie met de Mars Polar Lander - die ook onderdeel was van de missie. Tijdens deze missie waren er dus twee machines in bedrijf. De Mars Climate Orbiter (MCO) kwam tijdens het proces waarbij de satelliet in zijn baan wordt gebracht, te dicht bij de planeet wat resulteerde in een crash.
+					De NASA lanceerde in 1998 de Mars Climate Orbiter. De formele naam is 'Mars Surveyor '98 Orbiter'. Het doel was om informatie te verzamelen over het klimaat en de atmosfeer op Mars. Daarnaast moest het apparaat dienen als tussenstation voor communicatie met de Mars Polar Lander -- die ook onderdeel was van de missie. Tijdens deze missie waren er dus twee machines in bedrijf. De Mars Climate Orbiter (MCO) kwam tijdens het proces waarbij de satelliet in zijn baan wordt gebracht, te dicht bij de planeet wat resulteerde in een crash.
 
 				\paragraph{Datum en plaats}
 
@@ -457,7 +457,7 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 		\begin{itemize}
 			\item 0 is een getal
 			\item \( 0 \leq P(A) \leq 1 \), als \( A \subseteq S \)
-			\item (Wet van non-contradictie) Een stelling kan niet - op hetzelfde moment, op dezelfde manier - waar en niet waar zijn.
+			\item (Wet van non-contradictie) Een stelling kan niet -- op hetzelfde moment, op dezelfde manier -- waar en niet waar zijn.
 		\end{itemize}
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -512,7 +512,7 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 		In een Kripke structuur kan men een oneindig aantal stappen doorlopen. Men begint bij de initial state. Vervolgens kan men één of meerdere transities nemen naar een volgende state. Vanuit die state zijn er weer andere transities mogelijk, enzovoort. Vanuit de Kripke structuur kan de Computation Tree opgebouwd worden. De Computation Tree laat zien welke mogelijke paden allemaal bewandeld kunnen worden met de Kripke structuur. De Computation Tree is een (omgekeerde) boom, met bovenaan de initial state. Vanuit die state zijn één of meerdere transities mogelijk naar andere states. Die zijn weergegeven als takken die verbonden zijn met de initial state.
 		
-		Omdat de Kripke structuren totaal zijn - en dus per definitie oneindig bewandelbaar zijn - zijn de Computation Trees oneindig groot. Toch is er vanaf een zeker moment een patroon in te herkennen. Het is onnodig - en bovendien onmogelijk - om de gehele Computation Tree te tekenen. Het gaat enkel om het relevante deel.
+		Omdat de Kripke structuren totaal zijn -- en dus per definitie oneindig bewandelbaar zijn -- zijn de Computation Trees oneindig groot. Toch is er vanaf een zeker moment een patroon in te herkennen. Het is onnodig -- en bovendien onmogelijk -- om de gehele Computation Tree te tekenen. Het gaat enkel om het relevante deel.
 
 		[voeg CT in]
 
@@ -612,7 +612,7 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 
 		altijd moet gelden, in elk pad, in elke state op dat pad.
 
-		"Als p geldt dan moet q altijd - vroeg of laat - volgen."
+		"Als p geldt dan moet q altijd -- vroeg of laat -- volgen."
 
 		Er is een speciale operator voor Liveness:
 

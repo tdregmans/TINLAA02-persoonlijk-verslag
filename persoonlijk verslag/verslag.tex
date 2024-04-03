@@ -410,9 +410,6 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 		De schildpad gaat een wedstrijd aan met Achilles en zegt tegen hem dat hij zal winnen, zolang hij maar een voorsprong krijgt. De schildpad krijgt een voorsprong en de tijd begint te lopen. De redenering van de schildpad is als volgt: Als Achilles is aangekomen waar de schildpad begon, heeft de schildpad in de tussentijd tijd gehad om verder te komen. Dus Achilles zal de schildpad nooit inhalen. De redenering van de schildpad klopt niet. \par
 
 \noindent Het probleem is dat in een eindige hoeveelheid tijd er een oneindig aantal handelingen kan worden verricht. \par
-
-
-		[ geef meer uitleg]
 		
 	\newpage
 	
@@ -563,33 +560,27 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: p U q}
-				
-		\( M, s \models A(pUq) \iff \forall \pi \in \Pi (M, s) \cdot \exists k \cdot (M, \pi [k] \models q) \land (\forall i < k \cdot M, \pi[i] \models p)\)
+		
+			Voor deze operator bestaan twee mogelijke toepassingen: In combinatie met de \( \exists \) kwantor en de \( \forall \) kwantor: \\
+		\( M, s \models A(pUq) \iff \forall \pi \in \Pi (M, s) \cdot \exists k \cdot (M, \pi [k] \models q) \land (\forall i < k \cdot M, \pi[i] \models p)\) \\
+		\( M, s \models E(pUq) \iff \exists \pi \in \Pi (M, s) \cdot \exists k \cdot (M, \pi [k] \models q) \land (\forall i < k \cdot M, \pi[i] \models p)\)  \par
 
-		\( M, s \models E(pUq) \iff \exists \pi \in \Pi (M, s) \cdot \exists k \cdot (M, \pi [k] \models q) \land (\forall i < k \cdot M, \pi[i] \models p)\)
-
-		A(pUq) staat voor 'Always ...' 
-
-		[leg verder uit] 		
+		\noindent \(p U q\) betekent dat voor dat pad, \(p\) moet gelden, totdat \(q\) een keer waar is geweest. \(p\) en \(p\) zijn hierbij niet samen waar.
 
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Operator: p R q}
 				
-		\( M, s \models A(pRq) \iff \forall \pi \in \Pi (M, s) \cdot \forall k \cdot (\forall i < k \cdot M, \pi [i] \models \neg p) \Rightarrow (M, \pi [k] \models q) \)
+			Voor deze operator bestaan twee mogelijke toepassingen: In combinatie met de \( \exists \) kwantor en de \( \forall \) kwantor: \\
+		\( M, s \models A(pRq) \iff \forall \pi \in \Pi (M, s) \cdot \forall k \cdot (\forall i < k \cdot M, \pi [i] \models \neg p) \Rightarrow (M, \pi [k] \models q) \) \\
+		\( M, s \models E(pRq) \iff \exists \pi \in \Pi (M, s) \cdot \forall k \cdot (\forall i < k \cdot M, \pi [i] \models \neg p) \Rightarrow (M, \pi [k] \models q) \) \par
 
-		\( M, s \models E(pRq) \iff \exists \pi \in \Pi (M, s) \cdot \forall k \cdot (\forall i < k \cdot M, \pi [i] \models \neg p) \Rightarrow (M, \pi [k] \models q) \)
-
-		A(pUq) staat voor 'Always ...' 
-
-		[leg verder uit] 		
+		\noindent \(p R q\) betekent dat voor dat pad, \(p\) moet gelden, totdat \(q\) een keer waar is geweest. \(p\) en \(p\) moeten hierbij minsten één state samen waar. \(p\) lost \(q\) als het ware af.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Fairness}
 				
-		Omdat de definitie recursief is, is het mogelijk om operatoren te combineren. Sommige combinaties zijn erg zinvol, zoals bijvoorbeeld \( AG ( AF (p) )\)
-
-		Dit betekent dat op elk mogelijk pad, in elk mogelijke state \( AF(p) \) moet gelden. In andere woorden: Het moet altijd mogelijk zijn om vanuit de huidige state op een gegeven moment p waar te laten zijn. 
-
+		Omdat de definitie recursief is, is het mogelijk om operatoren te combineren. Sommige combinaties zijn erg zinvol, zoals bijvoorbeeld \( AG ( AF (p) )\) \\
+		Dit betekent dat op elk mogelijk pad, in elk mogelijke state \( AF(p) \) moet gelden. In andere woorden: Het moet altijd mogelijk zijn om vanuit de huidige state op een gegeven moment p waar te laten zijn. \\
 		\( AG ( AF ( p ) ) \) heet 'fairness'.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -597,21 +588,13 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 			
 		Liveness is een algemenere vorm van 'fairness'. De formule is 
 
-		\( AG (p \Rightarrow AF(q)) \) 
+		\[ AG (p \Rightarrow AF(q)) \]
 
-		Dit betekent dat 
-
-		 \( p \Rightarrow AF(q) \) 
-
-		altijd moet gelden, in elk pad, in elke state op dat pad.
-
-		"Als p geldt dan moet q altijd -- vroeg of laat -- volgen."
-
+		\noindent Dit betekent dat  \( p \Rightarrow AF(q) \) altijd moet gelden, in elk pad, in elke state op dat pad. "Als p geldt dan moet q altijd -- vroeg of laat -- volgen." \\
 		Er is een speciale operator voor Liveness:
+		\[ p \leadsto q \equiv AG (p \Rightarrow AF (q) ) \]
 
-		\( p \leadsto q \equiv AG (p \Rightarrow AF (q) ) \)
-
-		Let op! Ook als p nooit geldt, dan geldt de Liveness eigenschap! In zo'n situatie spreken we van een 'vacuous truth'. Een waarheid die nooit voorkomt.
+		\noindent Let op! Ook als p nooit geldt, dan geldt de Liveness eigenschap! In zo'n situatie spreken we van een 'vacuous truth'. Een waarheid die nooit voorkomt.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	

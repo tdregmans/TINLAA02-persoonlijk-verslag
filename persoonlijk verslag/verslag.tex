@@ -343,19 +343,20 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 	
 	\section{Modellen}
 	
-	Om systemen efficïent en waarheidsgetrouw te kunnen modelleren gebruiken we State Transition Diagrams. In deze diagrammen worden de zogenoemde 'states' als punten afgebeeld. In een systeem kunnen tussen deze states geswitcht worden. Dit noemen we transities.
-
-	[voeg voorbeeld van STD in]
-
-	Er zijn veel verschillende soorten diagrammen. Dit TINLAB focust op Kripke structuren.
+	Om systemen efficïent en waarheidsgetrouw te kunnen modelleren gebruiken we State Transition Diagrams. In deze diagrammen worden de zogenoemde 'states' als punten afgebeeld. In een systeem kunnen tussen deze states geswitcht worden. Dit noemen we transities. 
+		\begin{center}
+			\begin{minipage}{0.8\textwidth}
+				\includegraphics[width=\textwidth]{voorbeeld-state-transition-diagram.png}
+				\captionof{figure}{Kripke structuur in Uppaal}
+			\end{minipage}
+			\hfill
+		\end{center}
+	Er zijn veel verschillende soorten diagrammen. Dit TINLAB focust op Kripke structuren. In Figuur 2 is een voorbeeld van een systeem in Uppaal te zien. 
 	
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{De Kripke structuur}
 		
-		Een state is een beschrijving waarin een systeem zich gedurende een tijd bevindt.
-
-		[voeg voorbeeld van Kripke structuur in]
-
+		Een state is een beschrijving waarin een systeem zich gedurende een tijd bevindt. \\
 		Laten we als voorbeeld een stoplicht nemen. Men zou kunnen zeggen dat er in dit systeem vier verschillende states zijn:
 
 		\begin{itemize}
@@ -364,57 +365,51 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 			\item Groen licht
 			\item Oranje knipperend licht (error state)
 		\end{itemize}
+		Een systeem heeft altijd een begintoestand. Dit wordt de 'initial state' genoemd. Dit is de toestand waarmee het systeem start. \\ 
+		\(x = 0\) \\
+		We noemen de verzameling van alle states '\(S\)'. Elke individuele state noemen we \(s0\), \(s1\), \(s2\) en \(s3\).
 
-		Een systeem heeft altijd een begintoestand. Dit wordt de 'initial state' genoemd. Dit is de toestand waarmee het systeem start. 
-		x = 0
-
-		We noemen de verzameling van alle states 'S'. Elke individuele state noemen we s0, s1, s2 en s3.
-
-		s0...s3 e S
-
+		\[\{s0 ... s3\} \in S\]
 		Tussen deze vier toestanden zijn verschillende transities mogelijk. Alle transitiesrelaties die mogelijk zijn:
 
-		S = {s0, s1, s2, s3}
-		R ? S x S = {
-			(s0, s0), (s0, s1), (s0, s2), (s0, s3),
-			(s1, s0), (s1, s1), (s1, s2), (s1, s3),
-			(s2, s0), (s2, s1), (s2, s2), (s2, s3),
-			(s3, s0), (s3, s1), (s3, s2), (s3, s3),
-		}
-
-		Niet al deze transitie relaties zijn logisch en komen in de werkelijkheid voor. Zo is bijvoorbeeld de transitierelatie van Rood licht naar Oranje licht niet gebruikelijk.
-		
+		\[S = \{s0, s1, s2, s3\} \]
+		\[R \subseteq S \times S = \]
+		\[\{	(s0, s0), (s0, s1), (s0, s2), (s0, s3),\]
+		\[	(s1, s0), (s1, s1), (s1, s2), (s1, s3),\]
+		\[	(s2, s0), (s2, s1), (s2, s2), (s2, s3),\]
+		\[	(s3, s0), (s3, s1), (s3, s2), (s3, s3)
+		\}\]
+		In dit voorbeeld is  \(s0\) rood, \(s1\) oranje, \(s2\) groen en \(s3\) error.
+		\begin{center}
+			\begin{minipage}{0.8\textwidth}
+				\includegraphics[width=\textwidth]{stoplicht-uppaal.png}
+				\captionof{figure}{Stoplicht in Uppaal}
+			\end{minipage}
+			\hfill
+		\end{center}
+		Niet al deze transitie relaties zijn logisch en komen in de werkelijkheid voor. Zo is bijvoorbeeld de transitierelatie van Rood licht naar Oranje licht niet gebruikelijk. \\		
 		Alle systemen die wij modelleren zijn reactief. Dat betekent dat elke state een uitgaande transitierelatie moet hebben. Dit wordt ook wel een 'totaal' systeem genoemd.
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\subsection{Tijd}
-		
-		
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Guards en Invarianten}
 		
-		In de tool Uppaal kunnen we met Kripke structuren systemen modelleren. Elke toestand kan Invarianten krijgen. Elke transitierelatie kan Guards krijgen.
-		
-		Met een Invariant kunnen we eisen dat een bepaalde stelling altijd waar moet zijn zolang het systeem in die toestand is. Als de stelling niet meer waar is, dan wordt een transitie geforceerd.
-
+		In de tool Uppaal kunnen we met Kripke structuren systemen modelleren. Elke toestand kan Invarianten krijgen. Elke transitierelatie kan Guards krijgen. \\		
+		Met een Invariant kunnen we eisen dat een bepaalde stelling altijd waar moet zijn zolang het systeem in die toestand is. Als de stelling niet meer waar is, dan wordt een transitie geforceerd. \\
 		Met een Guard kunnen we eisen dat een bepaalde transitie alleen genomen kan worden als een bepaalde stelling waar is.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Deadlock}
 		
-		Een deadlock wordt veroorzaakt door een combinatie van Guards en Invarianten waardoor tijd niet kan verstrijken.
-
+		Een deadlock wordt veroorzaakt door een combinatie van Guards en Invarianten waardoor tijd niet kan verstrijken. \\
 		In Uppaal is tijd een continu verschijnsel. Alle klokken lopen even snel. Tijd kan alleen verstrijken in states. Het kost dus exact 0 tijd om een transitie te nemen. Als de Guards en Invarianten op een bepaalde manier zijn ingesteld, dan kan het zo zijn dat tijd niet kan verstrijken in het model. Dit heet een 'deadlock'.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{Zeno gedrag}
 		
-		Zeno gedrag is vernoemd naar de Griekse filosoof Zeno van Elea. Hij is bekend van verschillende paradoxen. Hier gaat het over de race tussen de schildpad en Achilles:
-		
-		De schildpad gaat een wedstrijd aan met Achilles en zegt tegen hem dat hij zal winnen, zolang hij maar een voorsprong krijgt. De schildpad krijgt een voorsprong en de tijd begint te lopen. De redenering van de schildpad is als volgt: Als Achilles is aangekomen waar de schildpad begon, heeft de schildpad in de tussentijd tijd gehad om verder te komen. Dus Achilles zal de schildpad nooit inhalen. De redenering van de schildpad klopt niet.
+		Zeno gedrag is vernoemd naar de Griekse filosoof Zeno van Elea. Hij is bekend van verschillende paradoxen. Hier gaat het over de race tussen de schildpad en Achilles: \\		
+		De schildpad gaat een wedstrijd aan met Achilles en zegt tegen hem dat hij zal winnen, zolang hij maar een voorsprong krijgt. De schildpad krijgt een voorsprong en de tijd begint te lopen. De redenering van de schildpad is als volgt: Als Achilles is aangekomen waar de schildpad begon, heeft de schildpad in de tussentijd tijd gehad om verder te komen. Dus Achilles zal de schildpad nooit inhalen. De redenering van de schildpad klopt niet. \par
 
-		Het probleem is dat in een eindige hoeveelheid tijd er een oneindig aantal handelingen kan worden verricht.
+\noindent Het probleem is dat in een eindige hoeveelheid tijd er een oneindig aantal handelingen kan worden verricht. \par
 
 
 		[ geef meer uitleg]
@@ -426,8 +421,7 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 	
 	\section{Logica}
 	
-	'Logica' komt van het Griekse woord 'logos', dat 'woord' en 'argument' betekent. Al duizenden jaren is men bezig met logica. Het wordt ook wel de kunst van formeel redeneren genoemd. Het is onder andere de basis voor de filosofie en wiskunde. Ook in de Informatica gaat het veel over logica.
-
+	'Logica' komt van het Griekse woord 'logos', dat 'woord' en 'argument' betekent. Al duizenden jaren is men bezig met logica. Het wordt ook wel de kunst van formeel redeneren genoemd. Het is onder andere de basis voor de filosofie en wiskunde. Ook in de Informatica gaat het veel over logica. \\
 	Er wordt in de logica onderscheid gemaakt tussen verschillende soorten logica. Het makkelijkste voorbeeld is Syllogisme van Aristoteles. Zo'n redenering gaat volgens 3 stappen:
 
 	\begin{enumerate}
@@ -435,9 +429,7 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 		\item (bijzondere stelling) Thijs is een mens.
 		\item (conclusie) Thijs heeft een hoofd.
 	\end{enumerate}
-
-	Op deze manier kan een conclusie bewezen worden. Als de eerste twee stelling kloppen, dan klopt de conclusie ook. Daar is niets tegen in te brengen. Dit wordt ook wel deductie genoemd.
-
+	Op deze manier kan een conclusie bewezen worden. Als de eerste twee stelling kloppen, dan klopt de conclusie ook. Daar is niets tegen in te brengen. Dit wordt ook wel deductie genoemd. \\
 	Verder wordt ook onderscheid gemaakt tussen Propositielogica en Predicatenlogica.
 	
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -451,7 +443,6 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 			\item Alle mensen hebben twee handen.
 			\item Door 2 punten kan altijd een rechte lijn getrokken worden.
 		\end{itemize}
-
 		Naast Proposities zijn er ook stellingen en axioma. Stellingen zijn Proposities die te bewijzen zijn, zoals bijvoorbeeld de stelling van Pythagoras. Tijdens zo'n bewijs moet men aannames doen. Sommige dingen zijn zó fundamenteel dat ze niet te bewijzen zijn. Als men tracht deze te bewijzen kan een cirkelredenering ontstaan. Zo'n fundamentele aanname heet een axioma. Het is een grondslag, waar geen bewijs voor is. bijvoorbeeld:
 
 		\begin{itemize}
@@ -508,22 +499,24 @@ Een vliegtuig van het type Boeing 737-800 van de Turkish Airlines storte in 2009
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\subsection{De computation tree}
 		
-		Met een Computation Tree kan CTL duidelijk worden uitgelegd. 
-
-		In een Kripke structuur kan men een oneindig aantal stappen doorlopen. Men begint bij de initial state. Vervolgens kan men één of meerdere transities nemen naar een volgende state. Vanuit die state zijn er weer andere transities mogelijk, enzovoort. Vanuit de Kripke structuur kan de Computation Tree opgebouwd worden. De Computation Tree laat zien welke mogelijke paden allemaal bewandeld kunnen worden met de Kripke structuur. De Computation Tree is een (omgekeerde) boom, met bovenaan de initial state. Vanuit die state zijn één of meerdere transities mogelijk naar andere states. Die zijn weergegeven als takken die verbonden zijn met de initial state.
-		
+		Met een Computation Tree kan CTL duidelijk worden uitgelegd. \\
+		In een Kripke structuur kan men een oneindig aantal stappen doorlopen. Men begint bij de initial state. Vervolgens kan men één of meerdere transities nemen naar een volgende state. Vanuit die state zijn er weer andere transities mogelijk, enzovoort. Vanuit de Kripke structuur kan de Computation Tree opgebouwd worden. De Computation Tree laat zien welke mogelijke paden allemaal bewandeld kunnen worden met de Kripke structuur. De Computation Tree is een (omgekeerde) boom, met bovenaan de initial state. Vanuit die state zijn één of meerdere transities mogelijk naar andere states. Die zijn weergegeven als takken die verbonden zijn met de initial state. \\		
 		Omdat de Kripke structuren totaal zijn -- en dus per definitie oneindig bewandelbaar zijn -- zijn de Computation Trees oneindig groot. Toch is er vanaf een zeker moment een patroon in te herkennen. Het is onnodig -- en bovendien onmogelijk -- om de gehele Computation Tree te tekenen. Het gaat enkel om het relevante deel.
 
-		[voeg CT in]
+		\begin{center}
+			\begin{minipage}{0.8\textwidth}
+				\includegraphics[width=\textwidth]{computation-tree-stoplicht.png}
+				\captionof{figure}{Computation Tree van Stoplicht (zie Figuur 3)}
+			\end{minipage}
+			\hfill
+		\end{center}
 
 		In een Kripke structuur \( M \), in state \( s \) is de formule \( \phi \) waar. Dit is uit te drukken in de volgende vorm:
 
-		\( M, s \models \phi \)
+		\[ M, s \models \phi \]
 
-		\( \phi \) is uit te drukken met een verschillende aantal operatoren:
-
-		\( \phi \equiv \phi | \neg \phi | \phi \land \phi | \phi \lor \phi | AG(\phi) | EG(\phi) | AF(\phi) | EF(\phi) | AX(\phi) | EX(\phi) | A(\phi U \phi) | E(\phi U \phi) | A (\phi R \phi) | E(\phi R \phi) \)
-
+		\noindent \( \phi \) is uit te drukken met een verschillende aantal operatoren: \\
+		\[ \phi \equiv \phi | \neg \phi | \phi \land \phi | \phi \lor \phi | AG(\phi) | EG(\phi) | AF(\phi) | EF(\phi) | AX(\phi) | EX(\phi) | A(\phi U \phi) | E(\phi U \phi) | A (\phi R \phi) | E(\phi R \phi) \] 
 		Zoals je ziet is \( \phi \) recursief. Het kan een negatie van een andere functie zijn, en daarom werken de regels recursief. Er zijn een aantal belangrijke operatoren. Hieronder worden ze kort beschreven met wiskundige definitie en kort de implicaties voor de CTL.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

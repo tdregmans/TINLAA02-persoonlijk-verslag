@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<template>
+		<name x="5" y="5">Stoplicht</name>
+		<declaration>// Place local declarations here.
+
+
+clock x;</declaration>
+		<location id="id0" x="-238" y="-102">
+			<name x="-229" y="-136">s0</name>
+		</location>
+		<location id="id1" x="-136" y="-102">
+			<name x="-127" y="-136">s1</name>
+		</location>
+		<location id="id2" x="-34" y="-102">
+			<name x="-25" y="-136">s2</name>
+		</location>
+		<location id="id3" x="-136" y="-238">
+			<name x="-127" y="-272">s3</name>
+		</location>
+		<init ref="id0"/>
+		<transition id="id4">
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<nail x="-136" y="-272"/>
+			<nail x="-272" y="-272"/>
+			<nail x="-272" y="-102"/>
+		</transition>
+		<transition id="id5">
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<nail x="-238" y="-238"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id1"/>
+			<target ref="id3"/>
+		</transition>
+		<transition id="id7">
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<nail x="-34" y="-238"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<nail x="-238" y="-34"/>
+			<nail x="-34" y="-34"/>
+		</transition>
+		<transition id="id9">
+			<source ref="id2"/>
+			<target ref="id1"/>
+		</transition>
+		<transition id="id10">
+			<source ref="id1"/>
+			<target ref="id0"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Stoplicht();
+// List one or more processes to be composed into a system.
+system Process;
+</system>
+	<simulator type="concrete">
+		<plot-widget title="Process.x">
+			<expression>Process.x</expression>
+		</plot-widget>
+	</simulator>
+	<queries>
+		<query>
+			<formula/>
+			<comment/>
+		</query>
+	</queries>
+</nta>
